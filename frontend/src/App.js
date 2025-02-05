@@ -1,12 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
-import Contact from './components/Contact';
-import NotFound from './pages/NotFound';
+import Contact from './pages/Contact';
 import './styles/App.scss';
 import { useState, useEffect } from 'react';
 import Loader from './components/Loader';
@@ -24,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         {isFirstLoad && <Loader />}
         <Navbar />
@@ -41,7 +39,7 @@ function App() {
           <Contact />
         </section>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

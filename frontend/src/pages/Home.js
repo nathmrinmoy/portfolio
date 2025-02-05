@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import '../styles/Home.scss';
 import { useEffect, useState } from 'react';
 import { FiDownload } from 'react-icons/fi';

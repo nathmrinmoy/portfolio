@@ -21,14 +21,6 @@ const ProjectPopup = ({ project, onClose }) => {
     // return `/pdfjs/web/viewer.html?file=${encodeURIComponent(pdfUrl)}&download=false&print=false`;
   };
 
-  // Add preloading when hovering over project cards
-  const handleProjectHover = (project) => {
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = project.pdfUrl;
-    document.head.appendChild(link);
-  };
-
   return (
     <AnimatePresence>
       <motion.div 
