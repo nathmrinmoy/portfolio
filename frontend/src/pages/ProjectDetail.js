@@ -5,13 +5,9 @@ const ProjectDetail = () => {
   const { scrollYProgress } = useScroll();
   
   return (
-    <motion.div className="project-detail">
-      <HeroSection />
-      <Overview />
-      <Process />
-      <Outcome />
-      <NextProject />
-    </motion.div>
+    <div className="project-detail">
+      {/* Project detail content will go here */}
+    </div>
   );
 };
 
