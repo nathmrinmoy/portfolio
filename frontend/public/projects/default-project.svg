@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="1200" height="675" fill="#1a1d1e"/>
-  
-  <!-- Grid Pattern -->
-  <path d="M0 67.5h1200M0 135h1200M0 202.5h1200M0 270h1200M0 337.5h1200M0 405h1200M0 472.5h1200M0 540h1200M0 607.5h1200" 
-        stroke="#2d3436" stroke-width="0.5" stroke-opacity="0.1"/>
-  <path d="M120 0v675M240 0v675M360 0v675M480 0v675M600 0v675M720 0v675M840 0v675M960 0v675M1080 0v675" 
-        stroke="#2d3436" stroke-width="0.5" stroke-opacity="0.1"/>
-  
-  <!-- Center Icon -->
-  <g transform="translate(520 257.5)">
-    <rect x="0" y="0" width="160" height="160" rx="20" fill="#FFD700" fill-opacity="0.1"/>
-    <path d="M40 80h80M80 40v80" stroke="#FFD700" stroke-width="4" stroke-linecap="round"/>
-  </g>
-  
-  <!-- Text -->
-  <text x="600" y="500" text-anchor="middle" fill="#FFD700" font-family="Inter, sans-serif" font-size="24">
-    Coming Soon
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+  <text x="50%" y="50%" font-family="Arial" font-size="24" fill="#666" text-anchor="middle">
+    Project Details Coming Soon
   </text>
 </svg> 
