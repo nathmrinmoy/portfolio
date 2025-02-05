@@ -1,0 +1,223 @@
+@import 'variables';
+
+.home {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at center,
+    #2d3436 0%,
+    #232829 50%,
+    #1a1d1e 100%
+  );
+  position: relative;
+  overflow: hidden;
+  
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+      
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: #FFF5CC;
+        
+        .highlight {
+          color: $accent-color;
+          -webkit-text-fill-color: $accent-color;
+          background: none;
+        }
+      }
+      
+      .subtitle-container {
+        margin-bottom: 2.5rem;
+        
+        p {
+          font-size: 1.25rem;
+          color: #FFF5CC;
+          line-height: 1.6;
+          margin: 0.3rem 0;
+        }
+      }
+      
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        
+        button, a {
+          padding: 0.875rem 2rem;
+          border-radius: 50px;
+          font-size: 1rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          
+          &.primary-btn {
+            background: $accent-color;
+            color: #2d3436;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            
+            &:hover {
+              background: lighten($accent-color, 5%);
+              box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+            }
+          }
+          
+          &.ghost-btn {
+            background: transparent;
+            color: #FFF5CC;
+            border: 1.5px solid #FFF5CC;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            
+            &:hover {
+              background: rgba(255, 255, 255, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home .hero {
+    .hero-content {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle-container {
+        p {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+    
+    .animated-text-container {
+      height: 40px;
+      
+      .animated-text {
+        font-size: 1.5rem;
+        letter-spacing: 0.02em;
+        
+        .bold-text {
+          margin-right: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-text-container {
+    .animated-text {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.primary-btn {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  &:hover::before {
+    transform: translateX(100%);
+  }
+}
+
+.highlight {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: $accent-color;  // Changed from gradient to solid
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+}
+
+.animated-text-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+  
+  .animated-text {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    
+    .bold-text {
+      font-weight: 700;
+      margin-right: 0.3rem;
+    }
+    
+    .rest-text {
+      color: #FFF5CC;
+      font-weight: 500;
+    }
+  }
+}
+
+.ghost-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: #FFF5CC;
+  border: 1.5px solid #FFF5CC;
+  text-decoration: none;
+  
+  .icon {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    .icon {
+      transform: translateY(2px);
+    }
+  }
+} 

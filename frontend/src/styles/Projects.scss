@@ -1,0 +1,146 @@
+.projects {
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  background: radial-gradient(
+    circle at center,
+    #2d3436 0%,
+    #232829 50%,
+    #1a1d1e 100%
+  );
+
+  .projects-header {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      background: linear-gradient(120deg, #FFD700 0%, #FFA500 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #FFF5CC;
+      opacity: 0.9;
+    }
+  }
+
+  .projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+
+    a {
+      text-decoration: none;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      
+      .project-image {
+        position: relative;
+        padding-top: 60%;
+        overflow: hidden;
+        background: #1a1d1e;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .project-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+
+          .view-project {
+            color: #FFD700;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+          }
+        }
+      }
+
+      .project-info {
+        padding: 1.5rem;
+
+        h3 {
+          font-size: 1.5rem;
+          color: #FFD700;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: #FFF5CC;
+          margin-bottom: 1rem;
+          line-height: 1.6;
+        }
+
+        .project-meta {
+          display: flex;
+          justify-content: space-between;
+          color: #FFF5CC;
+          opacity: 0.7;
+          font-size: 0.9rem;
+        }
+      }
+
+      &:hover {
+        .project-image {
+          img {
+            transform: scale(1.05);
+          }
+
+          .project-overlay {
+            opacity: 1;
+
+            .view-project {
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 6rem 1rem;
+
+    .projects-header {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+} 

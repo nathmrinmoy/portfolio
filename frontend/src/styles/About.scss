@@ -1,0 +1,119 @@
+@import 'variables';
+
+.about {
+  min-height: 100vh;
+  background: #2d3436;
+  padding: 8rem 2rem;
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    .intro-section {
+      margin-bottom: 3rem;
+      
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $accent-color;
+        -webkit-text-fill-color: initial;
+        background: none;
+      }
+      
+      .highlight-bar {
+        width: 60px;
+        height: 4px;
+        background: $accent-color;
+        border-radius: 2px;
+      }
+    }
+    
+    .bio-section, .interests-section {
+      margin-bottom: 2.5rem;
+      
+      .lead {
+        font-size: 1.5rem;
+        color: #FFD700;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        color: #FFF5CC;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    .connect-section {
+      text-align: center;
+      margin-top: 4rem;
+      
+      .connect-text {
+        font-size: 1.25rem;
+        color: #FFD700;
+        margin-bottom: 2rem;
+      }
+      
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        
+        a {
+          color: #FFD700;
+          font-size: 1.5rem;
+          transition: color 0.2s ease;
+          
+          &:hover {
+            color: #FFA500;
+          }
+        }
+      }
+      
+      .cta-button {
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        background: linear-gradient(120deg, #FFD700 0%, #FFA500 100%);
+        color: #2d3436;
+        border: none;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        
+        &:hover {
+          box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 6rem 1.5rem;
+    
+    .about-content {
+      .intro-section {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+      
+      .bio-section, .interests-section {
+        .lead {
+          font-size: 1.25rem;
+        }
+        
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+} 

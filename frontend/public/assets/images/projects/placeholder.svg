@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="720" fill="#1a1d1e"/>
+  
+  <!-- Grid Pattern -->
+  <path d="M0 72h1200M0 144h1200M0 216h1200M0 288h1200M0 360h1200M0 432h1200M0 504h1200M0 576h1200M0 648h1200" 
+        stroke="#2d3436" stroke-width="0.5" stroke-opacity="0.1"/>
+  <path d="M120 0v720M240 0v720M360 0v720M480 0v720M600 0v720M720 0v720M840 0v720M960 0v720M1080 0v720" 
+        stroke="#2d3436" stroke-width="0.5" stroke-opacity="0.1"/>
+  
+  <!-- Rotating Screens -->
+  <g>
+    <!-- Screen 1 -->
+    <rect x="400" y="160" width="400" height="300" rx="8" fill="#2d3436">
+      <animate 
+        attributeName="opacity"
+        values="1;0;0;1"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    
+    <!-- Screen 2 -->
+    <rect x="400" y="160" width="400" height="300" rx="8" fill="#2d3436">
+      <animate 
+        attributeName="opacity"
+        values="0;1;0;0"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    
+    <!-- Screen 3 -->
+    <rect x="400" y="160" width="400" height="300" rx="8" fill="#2d3436">
+      <animate 
+        attributeName="opacity"
+        values="0;0;1;0"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </rect>
+    
+    <!-- Screen Details -->
+    <g>
+      <rect x="420" y="180" width="360" height="20" rx="4" fill="#FFD700" fill-opacity="0.1"/>
+      <rect x="420" y="220" width="360" height="200" rx="4" fill="#FFD700" fill-opacity="0.05"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="600" y="520" text-anchor="middle" fill="#FFF5CC" font-family="Inter, sans-serif" font-size="24">
+    Coming Soon
+  </text>
+  
+  <!-- Loading Dots -->
+  <g>
+    <circle cx="580" y="540" r="4" fill="#FFF5CC">
+      <animate
+        attributeName="opacity"
+        values="0.3;1;0.3"
+        dur="1.5s"
+        repeatCount="indefinite"
+        begin="0s"
+      />
+    </circle>
+    <circle cx="600" y="540" r="4" fill="#FFF5CC">
+      <animate
+        attributeName="opacity"
+        values="0.3;1;0.3"
+        dur="1.5s"
+        repeatCount="indefinite"
+        begin="0.5s"
+      />
+    </circle>
+    <circle cx="620" y="540" r="4" fill="#FFF5CC">
+      <animate
+        attributeName="opacity"
+        values="0.3;1;0.3"
+        dur="1.5s"
+        repeatCount="indefinite"
+        begin="1s"
+      />
+    </circle>
+  </g>
+</svg> 

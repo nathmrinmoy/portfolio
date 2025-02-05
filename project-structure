@@ -1,0 +1,14 @@
+portfolio-website/
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── assets/
+│       ├── styles/
+│       └── utils/
+└── backend/
+    └── src/
+        └── main/
+            ├── java/
+            └── resources/ 

@@ -1,0 +1,19 @@
+.project-detail {
+  .section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    
+    &.full-width-image {
+      width: 100vw;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+} 
