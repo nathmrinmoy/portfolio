@@ -20,6 +20,24 @@ const projects = [
   },
   {
     id: 2,
+    title: 'Content Lifecycle Management',
+    description: 'Designed a comprehensive system for managing content from creation to archival',
+    image: '/assets/images/projects/placeholder.svg',
+    category: 'Enterprise',
+    year: '2023',
+    pdfUrl: '/projects/content-lifecycle.pdf'
+  },
+  {
+    id: 3,
+    title: 'Information Architecture',
+    description: 'Developed intuitive navigation and content structure for complex enterprise systems',
+    image: '/assets/images/projects/placeholder.svg',
+    category: 'Enterprise',
+    year: '2023',
+    pdfUrl: '/projects/information-architecture.pdf'
+  },
+  {
+    id: 4,
     title: 'B2B SaaS Dashboard',
     description: 'Created a unified dashboard for managing multiple business processes',
     image: '/assets/images/projects/placeholder.svg',
@@ -28,7 +46,7 @@ const projects = [
     pdfUrl: null
   },
   {
-    id: 3,
+    id: 5,
     title: 'Data Visualization Tool',
     description: 'Developed interactive data visualization components for complex datasets',
     image: '/assets/images/projects/placeholder.svg',
