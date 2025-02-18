@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiLinkedin, FiMail } from 'react-icons/fi';
 import '../styles/About.scss';
 
 const About = () => {
@@ -62,13 +62,11 @@ const About = () => {
           </p>
           <div className="social-links">
             <motion.a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:nathmrinmoy001@gmail.com"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FiGithub />
+              <FiMail />
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/nathmrinmoy/"
@@ -78,13 +76,6 @@ const About = () => {
               whileTap={{ scale: 0.95 }}
             >
               <FiLinkedin />
-            </motion.a>
-            <motion.a
-              href="mailto:nathmrinmoy001@gmail.com"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FiMail />
             </motion.a>
           </div>
         </motion.div>

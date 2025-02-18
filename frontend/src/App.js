@@ -5,38 +5,37 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import './styles/App.scss';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Loader from './components/Loader';
 
 function App() {
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
-
-  useEffect(() => {
-    // Set isFirstLoad to false after loader completes
-    const timer = setTimeout(() => {
-      setIsFirstLoad(false);
-    }, 2800); // Slightly longer than loader duration
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <BrowserRouter>
       <div className="App">
-        {isFirstLoad && <Loader />}
-        <Navbar />
-        <section id="home">
-          <Home />
-        </section>
-        <section id="projects">
-          <Projects />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
+        <AnimatePresence mode='wait'>
+          {isLoading ? (
+            <Loader onLoadingComplete={() => setIsLoading(false)} />
+          ) : (
+            <>
+              <Navbar />
+              <section id="home">
+                <Home />
+              </section>
+              <section id="projects">
+                <Projects />
+              </section>
+              <section id="about">
+                <About />
+              </section>
+              <section id="contact">
+                <Contact />
+              </section>
+            </>
+          )}
+        </AnimatePresence>
       </div>
     </BrowserRouter>
   );

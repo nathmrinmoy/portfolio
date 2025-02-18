@@ -42,14 +42,23 @@ const Home = () => {
             Hi 👋, I'm <motion.span 
               className="highlight"
               whileHover={{ 
-                scale: 1.05,
+                scale: 1.0,
                 transition: { duration: 0.2 }
               }}
             >
               Mrinmoy Nath
             </motion.span>
           </motion.h1>
-          
+
+          <motion.p
+            className="intro-text"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            I practice product design to solve complex problems through
+          </motion.p>
+
           <div className="animated-text-container">
             <AnimatePresence mode='wait'>
               <motion.div 

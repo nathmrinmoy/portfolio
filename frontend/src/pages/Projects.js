@@ -8,53 +8,27 @@ const projects = [
   {
     id: 1,
     title: 'ETL Platform Design',
-    description: 'Redesigned complex data transformation workflows into intuitive interfaces',
-    image: '/assets/images/projects/etl-platform.jpg',
-    screenshots: [
-      '/assets/images/projects/etl/screen1.jpg',
-      '/assets/images/projects/etl/screen2.jpg'
-    ],
+    description: 'Redesigned a complex ETL platform to simplify data transformation workflows, improving user efficiency by 40% and reducing training time by 60%.',
     category: 'Enterprise',
-    year: '2023',
+    year: '2024',
     pdfUrl: '/projects/etl-platform.pdf'
   },
   {
     id: 2,
     title: 'Content Lifecycle Management',
-    description: 'Designed a comprehensive system for managing content from creation to archival',
-    image: '/assets/images/projects/placeholder.svg',
+    description: 'Developed an end-to-end content management system that streamlined content creation, review, and publishing, reducing workflow time by 50%.',
     category: 'Enterprise',
-    year: '2023',
+    year: '2020',
     pdfUrl: '/projects/content-lifecycle.pdf'
   },
   {
     id: 3,
     title: 'Information Architecture',
-    description: 'Developed intuitive navigation and content structure for complex enterprise systems',
-    image: '/assets/images/projects/placeholder.svg',
-    category: 'Enterprise',
-    year: '2023',
-    pdfUrl: '/projects/information-architecture.pdf'
-  },
-  {
-    id: 4,
-    title: 'B2B SaaS Dashboard',
-    description: 'Created a unified dashboard for managing multiple business processes',
-    image: '/assets/images/projects/placeholder.svg',
-    category: 'SaaS',
-    year: '2023',
-    pdfUrl: null
-  },
-  {
-    id: 5,
-    title: 'Data Visualization Tool',
-    description: 'Developed interactive data visualization components for complex datasets',
-    image: '/assets/images/projects/placeholder.svg',
+    description: 'Restructured enterprise information hierarchy to improve findability and user navigation, resulting in 35% faster task completion rates.',
     category: 'Enterprise',
     year: '2022',
-    pdfUrl: null
+    pdfUrl: '/projects/information-architecture.pdf'
   }
-  // Add more projects as needed
 ];
 
 const Projects = () => {
@@ -107,40 +81,12 @@ const Projects = () => {
 
   // Add image error handling in the project card
   const ProjectCard = ({ project, onClick }) => {
-    const handleImageError = (e) => {
-      e.target.src = '/assets/images/projects/placeholder.svg';
-      console.log('Image failed to load:', e.target.src);
-    };
-
-    console.log('Project data:', {
-      title: project.title,
-      hasScreenshots: !!project.screenshots,
-      screenshotsCount: project.screenshots?.length,
-      images: project.screenshots ? [project.image, ...project.screenshots] : null
-    });
-
     return (
       <motion.div 
         className="project-card"
         whileHover={{ y: -10 }}
         onClick={onClick}
       >
-        <div className="project-image">
-          {project.screenshots ? (
-            <ImageCarousel 
-              images={[project.image, ...project.screenshots]} 
-            />
-          ) : (
-            <img 
-              src={project.image} 
-              alt={project.title}
-              onError={handleImageError}
-            />
-          )}
-          <div className="project-overlay">
-            <span className="view-project">View Project</span>
-          </div>
-        </div>
         <div className="project-info">
           <h3>{project.title}</h3>
           <p>{project.description}</p>

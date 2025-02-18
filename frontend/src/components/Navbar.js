@@ -59,7 +59,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
         >
           <a href="#home">
-            <img src="/assets/images/logo.png" alt="Mrinmoy Nath" />
+            <img src="/logo.png" alt="Mrinmoy Nath" />
           </a>
         </motion.div>
         <div className="nav-links">
