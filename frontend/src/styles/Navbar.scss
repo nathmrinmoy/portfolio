@@ -24,10 +24,11 @@
     justify-content: space-between;
 
     .logo {
-      text-decoration: none;
-      color: #FFD700;
-      font-size: 1.5rem;
-      font-weight: 600;
+      img {
+        height: 40px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
     }
 
     .nav-links {
@@ -64,6 +65,14 @@
         .icon {
           font-size: 1.1rem;
         }
+      }
+    }
+  }
+
+  &.scrolled {
+    .logo {
+      img {
+        height: 35px;
       }
     }
   }

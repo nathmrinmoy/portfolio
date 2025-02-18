@@ -53,14 +53,15 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="nav-content">
-        <div className="logo" onClick={() => scrollToSection('home')}>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            Mrinmoy Nath
-          </motion.div>
-        </div>
+        <motion.div 
+          className="logo"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <a href="#home">
+            <img src="/assets/images/logo.png" alt="Mrinmoy Nath" />
+          </a>
+        </motion.div>
         <div className="nav-links">
           {['projects', 'about', 'contact'].map((item) => (
             <motion.div
