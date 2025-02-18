@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import ProjectPopup from '../components/ProjectPopup';
-import ImageCarousel from '../components/ImageCarousel';
 import '../styles/Projects.scss';
 
 const projects = [
