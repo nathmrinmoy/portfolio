@@ -41,6 +41,15 @@ const projects = [
     year: '2022',
     pdfUrl: '/projects/information-architecture.pdf'
   }
+  {
+  id: 4,
+  title: 'CopilotGTM',
+  description:
+    'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, stakeholders, and what to do next.',
+  category: 'Product Strategy · AI',
+  year: '2025–26',
+  pdfUrl: '/projects/copilotgtm.pdf'
+},
 ];
 
 const Projects = () => {
