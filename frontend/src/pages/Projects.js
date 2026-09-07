@@ -4,18 +4,16 @@ import ProjectPopup from '../components/ProjectPopup';
 import '../styles/Projects.scss';
 
 const projects = [
+  {id: 1,
+  title: 'CopilotGTM',
+  description:
+    'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, stakeholders, and what to do next.',
+  category: 'Product Strategy · AI',
+  year: '2025–26',
+  pdfUrl: '/projects/copilotgtm.pdf'
+},
   {
-    id: 'copilotgtm',
-    title: 'CopilotGTM',
-    description:
-      'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, people, and what to do next.',
-    category: 'Product Strategy · AI',
-    year: '2025–26',
-    route: '/projects/copilotgtm',
-    featured: true
-  },
-  {
-    id: 1,
+    id: 2,
     title: 'ETL Platform Design',
     description:
       'Redesigned a complex ETL platform to simplify data transformation workflows, improving user efficiency by 40% and reducing training time by 60%.',
@@ -24,7 +22,7 @@ const projects = [
     pdfUrl: '/projects/etl-platform.pdf'
   },
   {
-    id: 2,
+    id: 3,
     title: 'Content Lifecycle Management',
     description:
       'Developed an end-to-end content management system that streamlined content creation, review, and publishing, reducing workflow time by 50%.',
@@ -33,7 +31,7 @@ const projects = [
     pdfUrl: '/projects/content-lifecycle.pdf'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Information Architecture',
     description:
       'Restructured enterprise information hierarchy to improve findability and user navigation, resulting in 35% faster task completion rates.',
@@ -42,14 +40,7 @@ const projects = [
     pdfUrl: '/projects/information-architecture.pdf'
   },
   {
-  id: 4,
-  title: 'CopilotGTM',
-  description:
-    'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, stakeholders, and what to do next.',
-  category: 'Product Strategy · AI',
-  year: '2025–26',
-  pdfUrl: '/projects/copilotgtm.pdf'
-},
+ 
 ];
 
 const Projects = () => {
