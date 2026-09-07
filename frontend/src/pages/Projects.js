@@ -5,9 +5,20 @@ import '../styles/Projects.scss';
 
 const projects = [
   {
+    id: 'copilotgtm',
+    title: 'CopilotGTM',
+    description:
+      'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, people, and what to do next.',
+    category: 'Product Strategy · AI',
+    year: '2025–26',
+    route: '/projects/copilotgtm',
+    featured: true
+  },
+  {
     id: 1,
     title: 'ETL Platform Design',
-    description: 'Redesigned a complex ETL platform to simplify data transformation workflows, improving user efficiency by 40% and reducing training time by 60%.',
+    description:
+      'Redesigned a complex ETL platform to simplify data transformation workflows, improving user efficiency by 40% and reducing training time by 60%.',
     category: 'Enterprise',
     year: '2024',
     pdfUrl: '/projects/etl-platform.pdf'
@@ -15,7 +26,8 @@ const projects = [
   {
     id: 2,
     title: 'Content Lifecycle Management',
-    description: 'Developed an end-to-end content management system that streamlined content creation, review, and publishing, reducing workflow time by 50%.',
+    description:
+      'Developed an end-to-end content management system that streamlined content creation, review, and publishing, reducing workflow time by 50%.',
     category: 'Enterprise',
     year: '2020',
     pdfUrl: '/projects/content-lifecycle.pdf'
@@ -23,7 +35,8 @@ const projects = [
   {
     id: 3,
     title: 'Information Architecture',
-    description: 'Restructured enterprise information hierarchy to improve findability and user navigation, resulting in 35% faster task completion rates.',
+    description:
+      'Restructured enterprise information hierarchy to improve findability and user navigation, resulting in 35% faster task completion rates.',
     category: 'Enterprise',
     year: '2022',
     pdfUrl: '/projects/information-architecture.pdf'
@@ -33,73 +46,100 @@ const projects = [
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Handle escape key to close popup
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
         setSelectedProject(null);
       }
     };
+
     window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
   }, []);
 
-  // Handle browser back button
   useEffect(() => {
     const handlePopState = () => {
       setSelectedProject(null);
     };
+
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []);
 
   const handleProjectClick = (project) => {
-    console.log('Clicked project:', {
-      title: project.title,
-      pdfUrl: project.pdfUrl,
-      hasScreenshots: !!project.screenshots
-    });
+    if (project.route) {
+      window.location.href = project.route;
+      return;
+    }
 
     if (project.pdfUrl) {
-      // If project has a PDF, always open it in new tab
-      console.log('Opening PDF:', project.pdfUrl);
       window.open(project.pdfUrl, '_blank');
-      return; // Add return to ensure we don't execute the else block
-    } else {
-      // For projects without PDF, show the popup with screenshots or placeholder
-      console.log('Opening popup for project:', project.title);
-      setSelectedProject(project);
-      window.history.pushState({ project: project.id }, '', `#project-${project.id}`);
+      return;
     }
+
+    setSelectedProject(project);
+    window.history.pushState(
+      { project: project.id },
+      '',
+      `#project-${project.id}`
+    );
   };
 
   const handleClosePopup = () => {
     setSelectedProject(null);
-    window.history.back();
+
+    if (window.location.hash) {
+      window.history.back();
+    }
   };
 
-  // Add image error handling in the project card
   const ProjectCard = ({ project, onClick }) => {
     return (
-      <motion.div 
-        className="project-card"
+      <motion.article
+        className={`project-card ${
+          project.featured ? 'project-card--featured' : ''
+        }`}
         whileHover={{ y: -10 }}
         onClick={onClick}
       >
+        {project.featured && (
+          <div className="featured-label">
+            Featured case study
+          </div>
+        )}
+
         <div className="project-info">
+          <div className="project-number">
+            {project.featured ? '01' : `0${project.id}`}
+          </div>
+
           <h3>{project.title}</h3>
+
           <p>{project.description}</p>
+
           <div className="project-meta">
             <span className="category">{project.category}</span>
             <span className="year">{project.year}</span>
           </div>
+
+          {project.featured && (
+            <div className="project-link">
+              Read case study <span>↗</span>
+            </div>
+          )}
         </div>
-      </motion.div>
+      </motion.article>
     );
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="projects"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -113,24 +153,25 @@ const Projects = () => {
         >
           Selected Works
         </motion.h1>
+
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="subtitle"
         >
-          A collection of projects I've worked on
+          Products, systems and decisions I've worked on
         </motion.p>
       </div>
 
-      <motion.div 
+      <motion.div
         className="projects-grid"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {projects.map((project, index) => (
-          <ProjectCard 
+        {projects.map((project) => (
+          <ProjectCard
             key={project.id}
             project={project}
             onClick={() => handleProjectClick(project)}
@@ -139,8 +180,8 @@ const Projects = () => {
       </motion.div>
 
       {selectedProject && (
-        <ProjectPopup 
-          project={selectedProject} 
+        <ProjectPopup
+          project={selectedProject}
           onClose={handleClosePopup}
         />
       )}
@@ -148,4 +189,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
