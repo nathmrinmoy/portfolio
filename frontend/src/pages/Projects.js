@@ -40,7 +40,7 @@ const projects = [
     category: 'Enterprise',
     year: '2022',
     pdfUrl: '/projects/information-architecture.pdf'
-  }
+  },
   {
   id: 4,
   title: 'CopilotGTM',
