@@ -39,7 +39,7 @@ const projects = [
     year: '2022',
     pdfUrl: '/projects/information-architecture.pdf'
   },
-  {
+  
  
 ];
 
