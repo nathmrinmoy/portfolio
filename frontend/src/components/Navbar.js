@@ -1,99 +1,51 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FiDownload } from 'react-icons/fi';
-import '../styles/Navbar.scss';
+import { useEffect, useState } from 'react';
+import '../styles/Site.scss';
+
+const links = [
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' }
+];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position
-      const sections = ['home', 'projects', 'about', 'contact'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Height of navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <motion.nav 
-      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="nav-content">
-        <motion.div 
-          className="logo"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#home">
-            <img src="/logo.png" alt="Mrinmoy Nath" />
-          </a>
-        </motion.div>
-        <div className="nav-links">
-          {['projects', 'about', 'contact'].map((item) => (
-            <motion.div
-              key={item}
-              className={`nav-link ${activeSection === item ? 'active' : ''}`}
-              onClick={() => scrollToSection(item)}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-            >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
-              {activeSection === item && (
-                <motion.div
-                  className="underline"
-                  layoutId="underline"
-                  transition={{ type: "spring", bounce: 0.2 }}
-                />
-              )}
-            </motion.div>
+    <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
+      <nav aria-label="Main" className="site-nav__inner wrap">
+        <a href="#top" className="site-nav__name" aria-label="Mrinmoy Nath, back to top">
+          <svg className="logo-mark" viewBox="6 10 76 40" width="34" height="23" aria-hidden="true" focusable="false">
+              <polyline
+                points="10.5,43.5 25,19 38,42.5 50.5,19.5 63,42.5 75.5,16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="6.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+          </svg>
+          <span className="site-nav__wordmark">Mrinmoy Nath</span>
+        </a>
+        <div className="site-nav__links">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="site-nav__link">
+              {l.label}
+            </a>
           ))}
-          <motion.a
-            href="/resume.pdf"
-            className="ghost-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            download
-          >
-            Resume <FiDownload className="icon" />
-          </motion.a>
+          <a href="/Resume.pdf" download="Mrinmoy_Nath_Resume.pdf" className="pill pill--small">
+            Resume <span aria-hidden="true">↓</span>
+          </a>
         </div>
-      </div>
-    </motion.nav>
+      </nav>
+    </header>
   );
 };
 
-export default Navbar; 
+export default Navbar;

@@ -1,0 +1,36 @@
+/*
+  Site-wide design tokens. Every page reads its colors and fonts from here,
+  so the whole site can be re-themed in one place.
+*/
+
+:root {
+  /* surfaces */
+  --bg-1: #2d3436;
+  --bg-2: #232829;
+  --bg-3: #1a1d1e;
+  --nav-rgb: 45, 52, 54;
+  --overlay-rgb: 255, 255, 255;
+  --shadow-rgb: 0, 0, 0;
+  --thumb-bg: #f4f1e6;
+  /* text */
+  --text: #fff5cc;
+  --text-rgb: 255, 245, 204;
+  /* accent */
+  --accent: #ffd700;
+  --accent-2: #ffa500;
+  --accent-3: #ffb347;
+  --accent-rgb: 255, 215, 0;
+  --on-accent: #2d3436;
+  /* type */
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-display: var(--font-body);
+}
+
+/* Home page headings pick up the display face */
+.home h1,
+.projects-header h1,
+.about h1,
+.contact h2 {
+  font-family: var(--font-display);
+}

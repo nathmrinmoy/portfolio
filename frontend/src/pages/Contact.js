@@ -1,99 +1,32 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import '../styles/Contact.scss';
-
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    window.location.href = `mailto:nathmrinmoy001@gmail.com?subject=Portfolio Contact: ${formData.name}&body=${formData.message}`;
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  return (
-    <motion.div 
-      className="contact"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="contact-content">
-        <motion.h2
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
+const Contact = () => (
+  <>
+    <section id="contact" className="contact-cta wrap">
+      <span className="mono muted">Contact</span>
+      <h2 className="contact-cta__title">Hiring for a hard B2B problem? Let’s talk.</h2>
+      <a href="mailto:nathmrinmoy001@gmail.com" className="contact-cta__email">
+        nathmrinmoy001@gmail.com
+      </a>
+      <div className="actions">
+        <a
+          href="https://www.linkedin.com/in/nathmrinmoy/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pill"
         >
-          Let's Connect
-        </motion.h2>
-        
-        <motion.p
-          className="contact-description"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          I'm always interested in hearing about new projects and opportunities.
-        </motion.p>
-
-        <motion.form
-          className="contact-form"
-          onSubmit={handleSubmit}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <div className="form-group">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-            />
-          </div>
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Send Message
-          </motion.button>
-        </motion.form>
+          LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+        <a href="/Resume.pdf" download="Mrinmoy_Nath_Resume.pdf" className="pill">
+          Download resume <span aria-hidden="true">↓</span>
+        </a>
       </div>
-    </motion.div>
-  );
-};
+    </section>
+    <footer className="site-footer">
+      <div className="site-footer__inner wrap mono">
+        <span>© {new Date().getFullYear()} Mrinmoy Nath</span>
+        <span>Bangalore, India</span>
+      </div>
+    </footer>
+  </>
+);
 
-export default Contact; 
+export default Contact;

@@ -1,8 +1,7 @@
-@import 'variables';
 
 .about {
   min-height: 100vh;
-  background: #2d3436;
+  background: var(--bg-1);
   padding: 8rem 2rem;
   
   .about-content {
@@ -16,7 +15,7 @@
         font-size: 3.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        color: $accent-color;
+        color: var(--accent);
         -webkit-text-fill-color: initial;
         background: none;
       }
@@ -24,7 +23,7 @@
       .highlight-bar {
         width: 60px;
         height: 4px;
-        background: $accent-color;
+        background: var(--accent);
         border-radius: 2px;
       }
     }
@@ -34,7 +33,7 @@
       
       .lead {
         font-size: 1.5rem;
-        color: #FFD700;
+        color: var(--accent);
         font-weight: 500;
         margin-bottom: 1.5rem;
         line-height: 1.4;
@@ -42,7 +41,7 @@
       
       p {
         font-size: 1.1rem;
-        color: #FFF5CC;
+        color: var(--text);
         line-height: 1.8;
         margin-bottom: 1.5rem;
       }
@@ -54,7 +53,7 @@
       
       .connect-text {
         font-size: 1.25rem;
-        color: #FFD700;
+        color: var(--accent);
         margin-bottom: 2rem;
       }
       
@@ -65,12 +64,12 @@
         margin-bottom: 2rem;
         
         a {
-          color: #FFD700;
+          color: var(--accent);
           font-size: 1.5rem;
           transition: color 0.2s ease;
           
           &:hover {
-            color: #FFA500;
+            color: var(--accent-2);
           }
         }
       }
@@ -81,13 +80,13 @@
         font-size: 1rem;
         font-weight: 500;
         cursor: pointer;
-        background: linear-gradient(120deg, #FFD700 0%, #FFA500 100%);
-        color: #2d3436;
+        background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+        color: var(--on-accent);
         border: none;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.2);
         
         &:hover {
-          box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+          box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
         }
       }
     }

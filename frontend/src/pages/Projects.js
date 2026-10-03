@@ -1,192 +1,95 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import ProjectPopup from '../components/ProjectPopup';
-import '../styles/Projects.scss';
+import { Link } from 'react-router-dom';
+import { projects } from '../data/projects';
 
-const projects = [
-  {id: 1,
-  title: 'CopilotGTM',
-  description:
-    'An AI-native revenue intelligence product that evolved from a presales copilot into a system for understanding deals, stakeholders, and what to do next.',
-  category: 'Product Strategy · AI',
-  year: '2025–26',
-  pdfUrl: '/projects/copilotgtm.pdf'
-},
-  {
-    id: 2,
-    title: 'ETL Platform Design',
-    description:
-      'Redesigned a complex ETL platform to simplify data transformation workflows, improving user efficiency by 40% and reducing training time by 60%.',
-    category: 'Enterprise',
-    year: '2024',
-    pdfUrl: '/projects/etl-platform.pdf'
-  },
-  {
-    id: 3,
-    title: 'Content Lifecycle Management',
-    description:
-      'Developed an end-to-end content management system that streamlined content creation, review, and publishing, reducing workflow time by 50%.',
-    category: 'Enterprise',
-    year: '2020',
-    pdfUrl: '/projects/content-lifecycle.pdf'
-  },
-  {
-    id: 4,
-    title: 'Information Architecture',
-    description:
-      'Restructured enterprise information hierarchy to improve findability and user navigation, resulting in 35% faster task completion rates.',
-    category: 'Enterprise',
-    year: '2022',
-    pdfUrl: '/projects/information-architecture.pdf'
-  },
-  
- 
-];
+const num = (i) => String(i + 1).padStart(2, '0');
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+const Meta = ({ project, index }) => (
+  <p className="work-meta mono">
+    <span className="work-meta__num">{num(index)}</span>
+    <span className="work-meta__kind">
+      <span className="work-meta__dot" aria-hidden="true" />
+      {project.kind}
+    </span>
+    {project.featured && <span className="work-meta__flag">Featured</span>}
+  </p>
+);
 
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        setSelectedProject(null);
-      }
-    };
+const Facts = ({ project }) => (
+  <p className="work-facts mono">
+    {project.category} · {project.year} · {project.role}
+  </p>
+);
 
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handlePopState = () => {
-      setSelectedProject(null);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
-
-  const handleProjectClick = (project) => {
-    if (project.route) {
-      window.location.href = project.route;
-      return;
-    }
-
-    if (project.pdfUrl) {
-      window.open(project.pdfUrl, '_blank');
-      return;
-    }
-
-    setSelectedProject(project);
-    window.history.pushState(
-      { project: project.id },
-      '',
-      `#project-${project.id}`
-    );
-  };
-
-  const handleClosePopup = () => {
-    setSelectedProject(null);
-
-    if (window.location.hash) {
-      window.history.back();
-    }
-  };
-
-  const ProjectCard = ({ project, onClick }) => {
-    return (
-      <motion.article
-        className={`project-card ${
-          project.featured ? 'project-card--featured' : ''
-        }`}
-        whileHover={{ y: -10 }}
-        onClick={onClick}
-      >
-        {project.featured && (
-          <div className="featured-label">
-            Featured case study
-          </div>
-        )}
-
-        <div className="project-info">
-          <div className="project-number">
-            {project.featured ? '01' : `0${project.id}`}
-          </div>
-
-          <h3>{project.title}</h3>
-
-          <p>{project.description}</p>
-
-          <div className="project-meta">
-            <span className="category">{project.category}</span>
-            <span className="year">{project.year}</span>
-          </div>
-
-          {project.featured && (
-            <div className="project-link">
-              Read case study <span>↗</span>
-            </div>
-          )}
+const Metrics = ({ metrics }) =>
+  metrics ? (
+    <dl className="work-metrics">
+      {metrics.map((m) => (
+        <div key={m.label}>
+          <dd>{m.value}</dd>
+          <dt className="mono">{m.label}</dt>
         </div>
-      </motion.article>
-    );
-  };
+      ))}
+    </dl>
+  ) : null;
 
-  return (
-    <motion.div
-      className="projects"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="projects-header">
-        <motion.h1
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          Selected Works
-        </motion.h1>
+const Cta = ({ title }) => (
+  <span className="work-cta">
+    Read case study <span aria-hidden="true">→</span>
+    <span className="visually-hidden">: {title}</span>
+  </span>
+);
 
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="subtitle"
-        >
-          Products, systems and decisions I've worked on
-        </motion.p>
+const Cover = ({ project, eager }) => (
+  <div className="work-cover">
+    <img
+      src={project.thumb}
+      alt={project.alt}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      width="960"
+      height="600"
+    />
+  </div>
+);
+
+const Row = ({ project, index }) => (
+  <li
+    className={`work-row ${index % 2 === 0 ? 'work-row--flip' : ''}`}
+    style={{ '--p': project.color }}
+  >
+    <Link to={project.route} className="work-row__link">
+      <div className="work-row__text">
+        <Meta project={project} index={index} />
+        <h3 className="work-title">{project.headline}</h3>
+        <Facts project={project} />
+        <p className="work-desc">{project.description}</p>
+        <Metrics metrics={project.metrics} />
+        {!project.metrics && project.tags && (
+          <ul className="tags tags--ruled mono" aria-label="Focus areas">
+            {project.tags.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        )}
+        <Cta title={project.title} />
       </div>
+      <Cover project={project} eager={index === 0} />
+    </Link>
+  </li>
+);
 
-      <motion.div
-        className="projects-grid"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            onClick={() => handleProjectClick(project)}
-          />
-        ))}
-      </motion.div>
-
-      {selectedProject && (
-        <ProjectPopup
-          project={selectedProject}
-          onClose={handleClosePopup}
-        />
-      )}
-    </motion.div>
-  );
-};
+const Projects = () => (
+  <section id="work" className="work wrap">
+    <div className="section-head">
+      <h2>Selected work</h2>
+      <span className="mono muted">{String(projects.length).padStart(2, '0')} case studies</span>
+    </div>
+    <ol className="work-list">
+      {projects.map((p, i) => (
+        <Row key={p.slug} project={p} index={i} />
+      ))}
+    </ol>
+  </section>
+);
 
 export default Projects;

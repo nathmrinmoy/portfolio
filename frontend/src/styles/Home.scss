@@ -1,12 +1,11 @@
-@import 'variables';
 
 .home {
   min-height: 100vh;
   background: radial-gradient(
     circle at center,
-    #2d3436 0%,
-    #232829 50%,
-    #1a1d1e 100%
+    var(--bg-1) 0%,
+    var(--bg-2) 50%,
+    var(--bg-3) 100%
   );
   position: relative;
   overflow: hidden;
@@ -26,18 +25,18 @@
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.25rem;
-        color: #FFF5CC;
+        color: var(--text);
         
         .highlight {
-          color: $accent-color;
-          -webkit-text-fill-color: $accent-color;
+          color: var(--accent);
+          -webkit-text-fill-color: var(--accent);
           background: none;
         }
       }
       
       .intro-text {
         font-size: 1.5rem;
-        color: #FFF5CC;
+        color: var(--text);
         margin: 0.25rem 0;
         opacity: 0.9;
       }
@@ -47,7 +46,7 @@
         
         p {
           font-size: 1.25rem;
-          color: #FFF5CC;
+          color: var(--text);
           line-height: 1.6;
           margin: 0.3rem 0;
         }
@@ -67,28 +66,29 @@
           transition: all 0.2s ease;
           
           &.primary-btn {
-            background: $accent-color;
-            color: #2d3436;
+            background: var(--accent);
+            color: var(--on-accent);
             border: none;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.2);
             
             &:hover {
-              background: lighten($accent-color, 5%);
-              box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+              background: var(--accent);
+              filter: brightness(1.06);
+              box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
             }
           }
           
           &.ghost-btn {
             background: transparent;
-            color: #FFF5CC;
-            border: 1.5px solid #FFF5CC;
+            color: var(--text);
+            border: 1.5px solid var(--text);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             
             &:hover {
-              background: rgba(255, 255, 255, 0.1);
+              background: rgba(var(--overlay-rgb), 0.1);
             }
           }
         }
@@ -146,7 +146,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    background: linear-gradient(120deg, rgba(var(--overlay-rgb), 0.2) 0%, transparent 50%);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
   }
@@ -166,7 +166,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: $accent-color;  // Changed from gradient to solid
+    background: var(--accent);  // Changed from gradient to solid
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease;
@@ -196,7 +196,7 @@
     }
     
     .rest-text {
-      color: #FFF5CC;
+      color: var(--text);
       font-weight: 500;
     }
   }
@@ -213,8 +213,8 @@
   cursor: pointer;
   transition: all 0.2s ease;
   background: transparent;
-  color: #FFF5CC;
-  border: 1.5px solid #FFF5CC;
+  color: var(--text);
+  border: 1.5px solid var(--text);
   text-decoration: none;
   
   .icon {
@@ -223,9 +223,46 @@
   }
   
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--overlay-rgb), 0.1);
     .icon {
       transform: translateY(2px);
     }
   }
 } 
+// Phones: let the hero wrap instead of pushing past the screen edge.
+.home .hero .hero-content {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .home .hero {
+    padding: 6rem 1.25rem 3rem;
+
+    .hero-content {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .intro-text {
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+    }
+  }
+
+  .animated-text-container {
+    height: auto;
+    min-height: 64px;
+    margin-bottom: 2rem;
+
+    .animated-text {
+      white-space: normal;
+      font-size: 1.15rem;
+    }
+  }
+}

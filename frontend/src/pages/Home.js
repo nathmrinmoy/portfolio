@@ -1,142 +1,57 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import '../styles/Home.scss';
-import { useEffect, useState } from 'react';
-import { FiDownload } from 'react-icons/fi';
+import { useRef } from 'react';
+import useGridDrift from '../hooks/useGridDrift';
 
-const sentences = [
-  { bold: "Designing", rest: "clarity in complexity" },
-  { bold: "Bridging", rest: "users, data, and design" },
-  { bold: "Refining", rest: "chaos into clarity" }
+const experience = [
+  { org: 'CopilotGTM', role: 'Co-founder' },
+  { org: 'Hevo', role: 'Senior product designer' },
+  { org: 'Fynley', role: 'Founder' },
+  { org: 'Whatfix', role: 'Senior product designer' },
+  { org: 'Education', role: 'MDes, IIT Guwahati' }
 ];
 
-const colors = ['#FFD700', '#FFA500', '#FFB347'];
-
 const Home = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % sentences.length);
-    }, 4000); // Change sentence every 4 seconds
-
-    return () => clearInterval(interval);
-  }, []);
+  const band = useRef(null);
+  useGridDrift(band);
 
   return (
-    <motion.div 
-      className="home"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <section className="hero">
-        <div className="hero-content">
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ 
-              duration: 0.8,
-              ease: "easeOut"
-            }}
-          >
-            Hi 👋, I'm <motion.span 
-              className="highlight"
-              whileHover={{ 
-                scale: 1.0,
-                transition: { duration: 0.2 }
-              }}
-            >
-              Mrinmoy Nath
-            </motion.span>
-          </motion.h1>
-
-          <motion.p
-            className="intro-text"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            I practice product design to solve complex problems through
-          </motion.p>
-
-          <div className="animated-text-container">
-            <AnimatePresence mode='wait'>
-              <motion.div 
-                key={currentIndex}
-                className="animated-text"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.span 
-                  className="bold-text"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  style={{ color: colors[currentIndex] }}
-                >
-                  {sentences[currentIndex].bold}
-                </motion.span>{' '}
-                <motion.span
-                  className="rest-text"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  {sentences[currentIndex].rest}
-                </motion.span>
-              </motion.div>
-            </AnimatePresence>
+    <>
+      <section id="top" className="hero-band" ref={band}>
+        <div className="hero wrap">
+          <p className="hero__status mono">
+            <span className="dot" aria-hidden="true" />
+            Open to Lead, Staff and Principal design roles · Bangalore or remote
+          </p>
+          <h1 className="hero__title">Product designer for complex B2B software.</h1>
+          <div className="hero__foot">
+            <p className="hero__intro">
+              Designer and two-time founder. Nine years on the hard end of B2B: AI agents, data
+              pipelines and enterprise navigation. I design with the business in mind, because I’ve
+              had to run one.
+            </p>
+            <div className="actions">
+              <a href="#work" className="pill pill--solid">
+                See selected work
+              </a>
+              <a href="#contact" className="pill">
+                Get in touch
+              </a>
+            </div>
           </div>
-
-          <motion.div 
-            className="cta-buttons"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.4,
-              ease: "easeOut"
-            }}
-          >
-            <motion.button
-              className="primary-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const projectsSection = document.getElementById('projects');
-                if (projectsSection) {
-                  const offset = 80; // Height of navbar
-                  const elementPosition = projectsSection.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-            >
-              View Projects
-            </motion.button>
-            <motion.a
-              href="/resume.pdf"
-              download="Mrinmoy_Nath_Resume.pdf"
-              className="ghost-btn"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => {
-                console.log('Resume downloaded');
-              }}
-            >
-              Download Resume <FiDownload className="icon" />
-            </motion.a>
-          </motion.div>
         </div>
       </section>
-    </motion.div>
+
+      <section aria-label="Experience at a glance" className="strip">
+        <dl className="strip__grid wrap">
+          {experience.map((e) => (
+            <div key={e.org}>
+              <dt className="eyebrow">{e.org}</dt>
+              <dd>{e.role}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </>
   );
 };
 
-export default Home; 
+export default Home;
