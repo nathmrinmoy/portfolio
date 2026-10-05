@@ -7,7 +7,6 @@ import {
   Reveal,
   Screen,
   ScreenTabs,
-  StatGrid,
   useDocumentMeta
 } from '../../components/case/CaseKit';
 import '../../styles/CaseStudy.scss';
@@ -26,7 +25,8 @@ const InformationArchitecture = () => {
 
       {/* HERO */}
       <section className="case-hero">
-        <div className="case-eyebrow">Information architecture · Research · Whatfix</div>
+        <div className="case-project">Whatfix · Information Architecture</div>
+        <div className="case-eyebrow">Navigation · Research · Three product lines</div>
 
         <h1>
           Whatfix had outgrown
@@ -37,15 +37,15 @@ const InformationArchitecture = () => {
         <p className="case-hero-intro">
           New product lines like Product Analytics and Enterprise Admin didn’t
           fit the existing structure, and the way features were grouped didn’t
-          match how customers looked for them. I initiated and led the
-          Information Architecture Charter to rebuild the navigation from
-          research up.
+          match how customers looked for them. Fixing that was my initiative. I
+          led a team of four designers and researchers through the research,
+          and the new structure shipped to all users.
         </p>
 
         <dl className="case-meta">
           <div>
             <dt>Role</dt>
-            <dd>Led the IA Charter</dd>
+            <dd>Started the IA initiative, led a team of 4</dd>
           </div>
           <div>
             <dt>Company</dt>
@@ -53,11 +53,15 @@ const InformationArchitecture = () => {
           </div>
           <div>
             <dt>Year</dt>
-            <dd>2022</dd>
+            <dd>2021</dd>
           </div>
           <div>
             <dt>Scope</dt>
             <dd>DAP, Product Analytics, Admin</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>Shipped to all users</dd>
           </div>
         </dl>
       </section>
@@ -132,35 +136,70 @@ const InformationArchitecture = () => {
         />
       </section>
 
-      {/* 03 BASELINE */}
+      {/* 03 LEADERSHIP */}
+      <section className="case-section case-section--alt">
+        <Reveal>
+          <div className="section-label">03 / How I ran it</div>
+          <h2>
+            My initiative,
+            <em> a team of four.</em>
+          </h2>
+        </Reveal>
+
+        <CardGrid
+          columns={2}
+          numbered
+          items={[
+            {
+              title: 'Started it',
+              text: 'The IA initiative was mine. I got it going, and the VP of Product Design and the VP of Product approved it, covering DAP, Product Analytics and Admin together.'
+            },
+            {
+              title: 'Led the team',
+              text: 'I led a team of four designers and researchers through the sitemap, the baseline tree test, the card sort, the new maps and the validation round.'
+            },
+            {
+              title: 'Brought engineering on board',
+              text: 'Engineering pushed back the most. We showed product and engineering leadership what the new structure would fix, and after that every team came on board.'
+            },
+            {
+              title: 'Handed over, then shipped',
+              text: 'I led it until a Director joined and took charge. The new IA shipped to all users in 2021 and is still how the product is organized today. Customer success received fewer queries, and product analytics showed people reaching their destination more directly.'
+            }
+          ]}
+        />
+      </section>
+
+      {/* 04 BASELINE */}
       <section className="case-section">
-        <div className="section-label">03 / The baseline</div>
+        <div className="section-label">04 / The baseline</div>
 
         <div className="two-column">
           <h2>
-            Three critical tasks had
-            <em> zero success.</em>
+            Two tasks had zero success,
+            <em> and most were under 20%.</em>
           </h2>
           <div>
             <p>
-              The baseline tree test covered 14 real tasks on the existing
-              structure. Configuring task list visibility rules, creating
-              self-help segments and finding repository content all scored 0%.
-              Users either didn’t connect the terms with where they lived, or
-              the features were buried too deep.
+              The baseline tree test gave 17 participants 14 real tasks on the
+              existing structure. Average success was 27%, and 9 of the 14
+              tasks finished under 20%. Configuring task list visibility rules
+              and creating a self-help segment scored 0%. Finding repository
+              content scored 0% on first click: nobody even started in the
+              right place. Users either didn’t connect the terms with where
+              they lived, or the features were buried too deep.
             </p>
             <p>
               Tree testing checks the hierarchy without any visual design in
               the way: can users find things where they expect them? We
-              measured task success, directness and time taken, and read the
-              results through similarity matrices, dendrograms, pie trees and
-              3D cluster views.
+              measured task success, directness, first click and time taken,
+              and read each task’s paths through pie trees.
             </p>
             <p>
               Some tasks were easy to find. Many suffered from poor placement,
               ambiguous terms and deep nesting. The existing navigation put 12
               items side by side in the main bar, and a settings menu of more
-              than 20 unrelated items.
+              than 20 items.
             </p>
           </div>
         </div>
@@ -179,7 +218,7 @@ const InformationArchitecture = () => {
           <div className="card-grid__item">
             <span className="card-grid__index">Abandonment</span>
             <h3>55 and 53 returns to home</h3>
-            <p>On creating self-help segments and finding repository content, participants went back to the start again and again.</p>
+            <p>On creating self-help segments and translating content, 17 participants went back to the start 55 and 53 times.</p>
           </div>
           <div className="card-grid__item">
             <span className="card-grid__index">Inconsistency</span>
@@ -192,6 +231,15 @@ const InformationArchitecture = () => {
           label="Baseline artifacts"
           tabs={[
             {
+              title: 'Baseline tree test',
+              hint: '17 participants, 14 tasks',
+              src: img('tree-test-baseline.webp'),
+              alt: 'Baseline tree test board with task success, first click and times participants returned home for 14 tasks',
+              label: 'Tree test · Baseline',
+              width: 2000,
+              height: 1052
+            },
+            {
               title: 'Current IA',
               hint: 'The structure we started from',
               src: img('ia-map-current-homepage.webp'),
@@ -199,15 +247,6 @@ const InformationArchitecture = () => {
               label: 'Current IA · All content homepage',
               width: 1750,
               height: 906
-            },
-            {
-              title: 'Baseline tree test',
-              hint: 'Task-level results',
-              src: img('tree-test-baseline.webp'),
-              alt: 'Baseline tree test board with task success, first click and times participants returned home for 14 tasks',
-              label: 'Tree test · Baseline',
-              width: 2000,
-              height: 1052
             }
           ]}
         />
@@ -215,7 +254,7 @@ const InformationArchitecture = () => {
 
       {/* 04 CARD SORT */}
       <section className="case-section dark-section">
-        <div className="section-label">04 / How users group features</div>
+        <div className="section-label">05 / How users group features</div>
 
         <div className="two-column">
           <h2>
@@ -268,22 +307,29 @@ const InformationArchitecture = () => {
 
       {/* 05 NEW STRUCTURE */}
       <section className="case-section">
-        <div className="section-label">05 / The new structure</div>
+        <div className="section-label">06 / The new structure</div>
 
         <div className="two-column">
           <h2>
-            One switcher,
-            <em> a navigation per product.</em>
+            One home per product,
+            <em> one way to move between them.</em>
           </h2>
           <div>
             <p>
               Instead of one long menu, each product line got its own
-              contextual navigation, with a shared account switcher and global
-              settings above it.
+              contextual navigation. DAP and Product Analytics share an account
+              switcher and global settings, and Admin has a product switcher.
             </p>
             <p>
               That gave Product Analytics and Admin a home of their own, and
               left room for the next vertical without another reshuffle.
+            </p>
+            <p>
+              The alternative was one unified tree with every product under a
+              single menu. The card sort argued against it: users kept content
+              creation and system administration apart, and a single tree
+              would have buried Analytics and Admin under a structure shaped
+              by DAP.
             </p>
           </div>
         </div>
@@ -322,95 +368,128 @@ const InformationArchitecture = () => {
         />
       </section>
 
-      {/* 06 VALIDATION */}
+      {/* 07 VALIDATION */}
       <section className="case-section dark-section outcome-section">
-        <div className="section-label">06 / Validation</div>
-        <h2>
-          The new structure
-          <em> more than doubled the benchmark.</em>
-        </h2>
+        <div className="section-label">07 / Validation</div>
+        <div className="two-column">
+          <h2>
+            Fewer tasks failed.
+            <em> Many labels still needed work.</em>
+          </h2>
+          <div>
+            <p>
+              Round two tested the proposed structure with 27 participants.
+              The tasks were rewritten to use the new labels, so single tasks
+              don’t compare one to one. The overall shape does.
+            </p>
+            <p>
+              The number of tasks with 40% or better success doubled, and
+              tasks under 20% fell from nine to five. Two of the baseline’s
+              zero-success tasks, task list visibility rules and self-help
+              segments, had no equivalent in round two, so they weren’t
+              retested.
+            </p>
+          </div>
+        </div>
 
-        <div className="shift-grid shift-grid--two">
+        <div className="shift-grid">
           <MetricShift
-            title="Tree test overall score"
-            before={36}
-            after={76}
-            beforeLabel="Benchmark"
-            afterLabel="New IA"
+            title="Average task success"
+            before={27}
+            after={37}
+            beforeLabel="Before"
+            afterLabel="After"
             max={100}
+            format={(v) => `${v}%`}
           />
           <MetricShift
-            title="Tasks with 80%+ success"
-            before={3}
-            after={6}
-            beforeLabel="Baseline"
-            afterLabel="New IA"
+            title="Tasks at 40%+ success"
+            before={4}
+            after={8}
+            beforeLabel="Before"
+            afterLabel="After"
             max={14}
+            format={(v) => `${v} of 14`}
+          />
+          <MetricShift
+            title="Tasks under 20% success"
+            before={9}
+            after={5}
+            beforeLabel="Before"
+            afterLabel="After"
+            max={14}
+            direction="down"
             format={(v) => `${v} of 14`}
           />
         </div>
 
-        <StatGrid
-          columns={1}
-          items={[
-            { value: '85%', label: 'of participants reached their destination without backtracking' }
-          ]}
-        />
-
-        <ul className="check-list check-list--inline" style={{ marginTop: '3rem' }}>
-          <li>Abandonment dropped sharply from 53–55 returns home</li>
-          <li>Scattered features consolidated</li>
-          <li>Ambiguous labels like “Configure Task List Visibility Rules” rewritten, improving first-click accuracy</li>
-          <li>Admin and Actions overlap fixed by refining labels and grouping</li>
-        </ul>
+        <span className="small-label" style={{ marginTop: '4.5rem' }}>Closest matching tasks, before and after</span>
+        <div className="task-compare" role="table" aria-label="Task success on matching tasks">
+          {[
+            ['Translating content', 12, 44],
+            ['Finding support', 41, 48],
+            ['Viewing user actions', 35, 41],
+            ['Viewing flow analytics', 6, 11],
+            ['Finding repository content', 12, 15],
+            ['Configuring a beacon theme', 12, 4],
+            ['Adding users', 94, 74]
+          ].map(([task, before, after]) => (
+            <div className="task-compare__row" role="row" key={task}>
+              <span role="rowheader">{task}</span>
+              <span role="cell" className="task-compare__before">{before}%</span>
+              <span role="cell" aria-hidden="true" className="task-compare__arrow">→</span>
+              <strong role="cell" className={after >= before ? 'is-up' : 'is-down'}>{after}%</strong>
+            </div>
+          ))}
+        </div>
 
         <Screen
-          src={img('tree-test-validated.webp')}
-          alt="Validation tree test board with task success, directness, time taken and first click for 14 tasks"
-          label="Tree test · New IA"
-          width={1322}
-          height={964}
+          src={img('tree-test-round2.webp')}
+          alt="Round two tree test results for 14 tasks with success, directness, first click, visited right branch, time and returns home"
+          label="Tree test · New IA, round 2"
+          width={2640}
+          height={1600}
           theme="dark"
         />
       </section>
 
-      {/* 07 WHAT DIDN'T WORK */}
+      {/* 08 WHAT DIDN'T WORK */}
       <section className="case-section">
-        <div className="section-label">07 / What still didn’t work</div>
+        <div className="section-label">08 / What still didn’t work</div>
 
         <div className="two-column">
           <h2>
-            Five tasks stayed
-            <em> below 20%.</em>
+            People found the right branch,
+            <em> then lost the label.</em>
           </h2>
           <div>
             <p>
-              Tasks 1, 3, 8, 10 and 13 still had success rates under 20%, so
-              their naming and placement needed another pass. Some users still
-              misclicked first, which pointed at subcategories and deeper
-              layers of the IA. Edge cases such as advanced user
-              configurations still needed usability testing.
+              Participants reached the right branch 54% of the time, but only
+              37% finished there. First-click accuracy stayed flat, 39% before
+              and 35% after, and returns to home didn’t fall. The top level was
+              right more often than the labels underneath it.
             </p>
             <p>
-              The structure performed far better overall, and the task-level
-              results showed exactly which areas needed the next round of
-              work.
+              Five tasks were under 20% in round two: beacon themes, employee
+              app menus, content repositories, funnels and test cases. Adding
+              users also dropped from 94% to 74% once it moved under
+              Collaborators. These were the open problems after round two.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 08 TAKEAWAY */}
+      {/* 09 TAKEAWAY */}
       <section className="case-section final-section dark-section">
-        <div className="section-label">08 / What I learned</div>
+        <div className="section-label">09 / What I learned</div>
         <h2>
           Measure the old structure
           <em> before you defend the new one.</em>
         </h2>
         <p>
-          The baseline tree test changed the conversation with stakeholders.
-          Instead of debating opinions about menus, we were comparing task
-          success on the same 14 tasks, before and after.
+          The baseline gave us evidence to show leadership what the new
+          structure would fix. Round two was humbler: fewer tasks failed, but
+          many labels still needed work.
         </p>
       </section>
 

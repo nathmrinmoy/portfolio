@@ -60,6 +60,7 @@ const Row = ({ project, index }) => (
     <Link to={project.route} className="work-row__link">
       <div className="work-row__text">
         <Meta project={project} index={index} />
+        <p className="work-name">{project.name}</p>
         <h3 className="work-title">{project.headline}</h3>
         <Facts project={project} />
         <p className="work-desc">{project.description}</p>

@@ -6,6 +6,7 @@ import {
   Flow,
   Reveal,
   Screen,
+  ScreenTabs,
   useDocumentMeta
 } from '../../components/case/CaseKit';
 import '../../styles/CaseStudy.scss';
@@ -52,7 +53,7 @@ const palette = [
 const ContentLifecycle = () => {
   useDocumentMeta(
     'Content Lifecycle Management case study',
-    'Designing and concept-testing a content lifecycle system for Whatfix content teams.'
+    'Designing, testing and shipping a content lifecycle system for Whatfix content teams.'
   );
 
   return (
@@ -61,7 +62,8 @@ const ContentLifecycle = () => {
 
       {/* HERO */}
       <section className="case-hero">
-        <div className="case-eyebrow">Workflow design · Concept testing · Whatfix</div>
+        <div className="case-project">Whatfix · Content Lifecycle Management</div>
+        <div className="case-eyebrow">Workflow design · Concept testing · Shipped</div>
 
         <h1>
           Nobody could tell
@@ -73,11 +75,15 @@ const ContentLifecycle = () => {
           Content teams tracked drafts, reviews and releases in spreadsheets
           and Jira tickets. Feedback was buried in email, and there was no way
           to publish one piece without releasing everything. I designed and
-          concept-tested a lifecycle system that made the status of every
-          piece of content visible.
+          tested a lifecycle system that made the status of every piece of
+          content visible, and it shipped to all users.
         </p>
 
         <dl className="case-meta">
+          <div>
+            <dt>Role</dt>
+            <dd>Senior Product Designer</dd>
+          </div>
           <div>
             <dt>Company</dt>
             <dd>Whatfix</dd>
@@ -88,7 +94,7 @@ const ContentLifecycle = () => {
           </div>
           <div>
             <dt>Stage</dt>
-            <dd>Concept → tested</dd>
+            <dd>Tested → shipped to all users</dd>
           </div>
           <div>
             <dt>Users</dt>
@@ -99,12 +105,11 @@ const ContentLifecycle = () => {
 
       <section className="case-hero-visual">
         <Screen
-          src={img('lifecycle-board.webp')}
-          alt="Lifecycle management board with Draft, In Review, Ready and Published columns"
-          label="Whatfix · Lifecycle management"
-          width={1231}
-          height={812}
-          bare
+          src={img('content-list.webp')}
+          alt="Content list with stage chips, environment, folder and owner for each item"
+          label="Whatfix · Content"
+          width={2880}
+          height={1336}
         />
       </section>
 
@@ -159,7 +164,7 @@ const ContentLifecycle = () => {
         </h2>
         <p>
           Large and medium enterprises managed content creation, review,
-          testing and deployment by hand, tracking it in spreadsheets and JIRA.
+          testing and deployment by hand, tracking it in spreadsheets and Jira.
           That caused inefficiencies, errors and delays in getting good
           learning content to employees.
         </p>
@@ -194,7 +199,7 @@ const ContentLifecycle = () => {
         <Flow
           compact
           steps={[
-            { title: 'Requirements', text: '“What to create?” Discussed with SMEs, then tracked in spreadsheets or JIRA.' },
+            { title: 'Requirements', text: '“What to create?” Discussed with SMEs, then tracked in spreadsheets or Jira.' },
             { title: 'Creation', text: '“How to create?” Some content is built in the Editor, some in the Dashboard, and the taxonomy of content and widgets is unclear.' },
             { title: 'Assessment', text: '“What needs to be published?” No way to see what was created for this release. Manual tagging is error prone, so more spreadsheets.' },
             { title: 'Review', text: '“Is it good enough?” Language and look and feel are reviewed, but there’s no way to assign reviewers. Screenshots go out in email and lose context.' },
@@ -275,7 +280,7 @@ const ContentLifecycle = () => {
             'Follow an enterprise-compliant lifecycle?',
             'Assign content to specific reviewers?',
             'Make reviewing content easier?',
-            'Send only tested content to QA and UAT?'
+            'Send only content that is ready to test to UAT?'
           ].map((q) => (
             <li key={q}>
               <span>How might we</span> {q.charAt(0).toLowerCase() + q.slice(1)}
@@ -315,30 +320,41 @@ const ContentLifecycle = () => {
           </h2>
           <div>
             <p>
-              Progress is tracked automatically across lifecycle stages.
-              Draft, In Review, Ready and Live states are visible in the
-              content list and filterable by stage, type and folder.
+              When reviewers approve an item, it moves to Ready automatically.
+              Items can also be moved by hand.
+              Draft, In review, Ready and Live are visible in the content list
+              and filterable by stage, type and folder.
             </p>
             <p>
-              The board view gives the same content a release-focused layout,
-              with stages a team can manage to match its own process.
-            </p>
-            <p>
-              Content moves in releases, with “Push to UAT” and “Push to
-              Production”. If any child content is still in draft, the push is
-              blocked and the reason is shown, so broken content never ships
-              by accident.
+              An Environment column answers the question teams asked most:
+              is this live, and where? A stage board was also designed and
+              planned for version 2.0.
             </p>
           </div>
         </div>
 
-        <Screen
-          src={img('content-list.webp')}
-          alt="Content list with type, stage, folder, creator and last updated columns and colored stage chips"
-          label="Whatfix · Content"
-          width={1240}
-          height={818}
-          bare
+        <ScreenTabs
+          label="Status views"
+          tabs={[
+            {
+              title: 'Content list',
+              hint: 'Stage and environment per item',
+              src: img('content-list.webp'),
+              alt: 'Content list with stage chips, environment, folder, owner and stage filters with counts',
+              label: 'Whatfix · Content',
+              width: 2880,
+              height: 1336
+            },
+            {
+              title: 'Stage board (v2.0)',
+              hint: 'Designed, planned for version 2.0',
+              src: img('lifecycle-board.webp'),
+              alt: 'Lifecycle board with reviewers and due dates on in-review cards and a locked draft with a child item',
+              label: 'Lifecycle · v2.0 design',
+              width: 2880,
+              height: 1490
+            }
+          ]}
         />
       </section>
 
@@ -353,51 +369,88 @@ const ContentLifecycle = () => {
           </h2>
           <div>
             <p>
-              Reviewers comment directly on the walkthrough in the
-              application where it runs. Threads stay attached to the content,
-              and authors can assign specific reviewers.
+              Authors send content for review with named reviewers, a due
+              date and a note. Tags are suggested from the step text, so
+              tagging stops being a separate manual chore.
             </p>
             <p>
-              Replies come back as notifications, so a review doesn’t stall
-              waiting for someone to check an inbox.
+              Reviewers comment on the walkthrough in the live application,
+              on the exact step. Replies come back as in-product
+              notifications, so a review doesn’t stall in someone’s inbox.
             </p>
           </div>
         </div>
 
+        <Screen
+          src={img('send-for-review.webp')}
+          alt="Send for review drawer with two assigned reviewers, a due date, a note and suggested tags"
+          label="Review · Assign reviewers"
+          width={2880}
+          height={1800}
+          theme="dark"
+        />
+
         <div className="two-up">
           <Screen
             src={img('in-context-comments.webp')}
-            alt="In-context comment threads on a page with a comments side panel"
-            label="Review · Comments"
-            width={822}
-            height={585}
+            alt="A comment thread pinned to step 3 of a walkthrough running in the live application, with a comments panel and review status"
+            label="Review · Comments on the live app"
+            width={2880}
+            height={1560}
             theme="dark"
-            caption="Comment threads pinned to the content, with a panel listing every open conversation."
-            bare
+            caption="Threads sit on the exact step, in the app the content runs in."
           />
           <Screen
-            src={img('status-and-notifications.webp')}
-            alt="Content list beside an email notification for a comment reply"
+            src={img('notifications.webp')}
+            alt="Notifications panel with a comment reply, a review request, an approval and a blocked push"
             label="Review · Notifications"
-            width={1145}
-            height={758}
+            width={2880}
+            height={1800}
             theme="dark"
-            caption="A reply notification brings the reviewer back to the exact thread."
-            bare
+            caption="Replies, review requests and blocked pushes arrive in the product."
           />
         </div>
-
-        <ul className="check-list check-list--inline">
-          <li>Selective publishing to a chosen environment</li>
-          <li>A UAT environment for parallel testing</li>
-          <li>Version history with rollback</li>
-          <li>AI-suggested tags</li>
-        </ul>
       </section>
 
-      {/* 07 TESTING */}
+      {/* 07 RELEASE */}
       <section className="case-section">
-        <div className="section-label">07 / Concept testing</div>
+        <div className="section-label">07 / Release without breaking things</div>
+
+        <div className="two-column">
+          <h2>
+            Push what’s ready,
+            <em> hold what isn’t.</em>
+          </h2>
+          <div>
+            <p className="problem-solved">
+              <strong>Problem solved</strong>
+              Releases were all or nothing, testers saw everything, and there were only two environments.
+            </p>
+            <p>
+              Teams push selected items to UAT to test with a small group, then
+              to Production. If an item contains child content that is still in
+              Draft, the push can’t complete. The dialog names the child item
+              and offers to open it or take that item out of the push.
+            </p>
+            <p>
+              Every push saves a version, so any item can be rolled back from
+              its history.
+            </p>
+          </div>
+        </div>
+
+        <Screen
+          src={img('push-to-production.webp')}
+          alt="Push to Production dialog with two ready items and one item blocked because its child content is still in draft"
+          label="Release · Push to Production"
+          width={2880}
+          height={1800}
+        />
+      </section>
+
+      {/* 08 TESTING */}
+      <section className="case-section case-section--alt">
+        <div className="section-label">08 / Concept testing</div>
 
         <div className="two-column">
           <h2>
@@ -407,8 +460,9 @@ const ContentLifecycle = () => {
           <div>
             <p>
               The System Usability Scale (SUS) is a standardized measure of
-              how intuitive and easy to use a system is. We used it to test
-              four concepts and see whether they addressed user needs.
+              how intuitive and easy to use a system is. We built
+              clickable prototypes of four concepts and tested them with about
+              12 to 15 customers.
             </p>
             <p>
               Users were asked to track content statuses (Draft, In Review,
@@ -417,21 +471,42 @@ const ContentLifecycle = () => {
               tagging and search, and publish selected content instead of
               pushing every update at once.
             </p>
-            <p>Based on the score, concept 4 was selected as the direction to build.</p>
+            <p>
+              Concepts 1 to 3 each scored below 65. Concept 4 scored 76.4,
+              above the commonly cited average of 68, so it became the
+              direction we built.
+            </p>
+            <p>
+              One idea I dropped: I first wanted a formal testing process as
+              part of the lifecycle. Our CTO convinced me that Whatfix is a
+              digital adoption company, not a testing company, so testing
+              stayed a step, UAT, rather than a product of its own.
+            </p>
           </div>
         </div>
+
+        <Screen
+          src={img('concepts.webp')}
+          alt="Four concepts: content moved in releases, one tab per environment, folders by readiness, and the chosen stage on every item"
+          label="Concepts 1 to 4"
+          width={2880}
+          height={1782}
+        />
 
         <SusGauge score={76.4} />
 
         <span className="small-label" style={{ marginTop: '5rem' }}>Every problem mapped to a solution</span>
         <div className="pivot-table" role="table" aria-label="Problems and solutions">
           {[
-            ['Tracking', 'Spreadsheets and JIRA tickets to track requirements', 'Lifecycle board with stages'],
+            ['Tracking', 'Spreadsheets and Jira tickets to track requirements', 'Stages that move on approval'],
             ['Status', 'No way to tell what is new, in review or live', 'Stage chips, filters and Live/Not Live states'],
             ['Review', 'Constant back and forth; review buried in email chains', 'Comments pinned to content in the live app'],
             ['Ownership', 'No in-house way to assign content for review', 'Reviewer assignment'],
             ['Context', 'Screenshots don’t show the current state of the application', 'Review on the live application, not on screenshots'],
-            ['Release', 'Testers see everything; no selective movement', 'Selective push to UAT and Production']
+            ['Release', 'Testers see everything; no selective movement', 'Selective push to UAT and Production'],
+            ['Safety', 'A broken child item could ship with its parent', 'Push blocked per item, with the reason'],
+            ['Tagging', 'Every item tagged by hand', 'Tags suggested at review'],
+            ['Recovery', 'No way back after a bad release', 'Versions with rollback']
           ].map(([dimension, before, after]) => (
             <div className="pivot-table__row" role="row" key={dimension}>
               <span role="rowheader">{dimension}</span>
@@ -445,13 +520,13 @@ const ContentLifecycle = () => {
 
       {/* 08 SYSTEM */}
       <section className="case-section dark-section">
-        <div className="section-label">08 / Built on the design system</div>
+        <div className="section-label">09 / Built on the design system</div>
         <h2>
           Status colors
           <em> did the explaining.</em>
         </h2>
         <p>
-          The concepts used the Whatfix design system, so stage and severity
+          The product used the Whatfix design system, so stage and severity
           colors carried meaning consistently across the product. Each status
           color was checked for contrast at its 50 and 100 tints.
         </p>
@@ -469,32 +544,32 @@ const ContentLifecycle = () => {
 
       {/* 09 EXPECTED OUTCOMES */}
       <section className="case-section outcome-section">
-        <div className="section-label">09 / Expected outcomes</div>
+        <div className="section-label">10 / Shipped</div>
         <h2>
-          What we expected
-          <em> the system to change.</em>
+          Shipped to all users.
+          <em> Here’s what it was built to change.</em>
         </h2>
 
         <CardGrid
-          columns={5}
+          columns={4}
           items={[
             { title: 'More efficient', text: 'Faster content creation and management.' },
             { title: 'Fewer rollbacks', text: 'Better testing and review before content reaches production.' },
             { title: 'Less manual work', text: 'Less dependence on manual tagging and tracking.' },
-            { title: 'Less duplication', text: 'Clear status reduces employee confusion, and with it duplicate content.' },
             { title: 'Fewer success tickets', text: 'Fewer tickets about content status.' }
           ]}
         />
 
         <p className="outcome-note">
-          These are the outcomes the concept was designed to move, not
-          measured results.
+          The release went to every customer. We didn’t instrument these
+          outcomes, so they are the goals it was designed for, not measured
+          results.
         </p>
       </section>
 
       {/* 10 TAKEAWAY */}
       <section className="case-section final-section dark-section">
-        <div className="section-label">10 / What I learned</div>
+        <div className="section-label">11 / What I learned</div>
         <h2>
           The most useful status
           <em> is the one nobody has to update.</em>

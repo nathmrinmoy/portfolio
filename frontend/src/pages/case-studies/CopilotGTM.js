@@ -2,6 +2,7 @@ import { FiArrowUpRight, FiUsers, FiActivity, FiLayers } from 'react-icons/fi';
 import {
   CaseBack,
   CaseFooter,
+  CardGrid,
   Chain,
   Chips,
   QuestionList,
@@ -18,7 +19,7 @@ const img = (name) => `/projects/copilotgtm/${name}`;
 const CopilotGTM = () => {
   useDocumentMeta(
     'CopilotGTM case study',
-    'How customer discovery turned CopilotGTM from a presales copilot into a revenue intelligence product.'
+    'How customer discovery turned CopilotGTM from a presales copilot into a revenue orchestration product.'
   );
 
   return (
@@ -27,6 +28,7 @@ const CopilotGTM = () => {
 
       {/* HERO */}
       <section className="case-hero">
+        <div className="case-project">CopilotGTM</div>
         <div className="case-eyebrow">Product · Design · Strategy · AI</div>
 
         <h1>
@@ -37,16 +39,12 @@ const CopilotGTM = () => {
 
         <p className="case-hero-intro">
           CopilotGTM started as an AI copilot for presales teams. Customer
-          discovery revealed a bigger opportunity: helping sales teams
-          understand what was happening inside their deals, who mattered,
-          and what to do next.
+          discovery pointed somewhere bigger: revenue orchestration for sales
+          teams. It showed what was happening inside each deal, who mattered,
+          what put it at risk, and the next action to take.
         </p>
 
         <dl className="case-meta">
-          <div>
-            <dt>Role</dt>
-            <dd>Co-founder, Product &amp; Design</dd>
-          </div>
           <div>
             <dt>Stage</dt>
             <dd>0 → 1</dd>
@@ -57,7 +55,7 @@ const CopilotGTM = () => {
           </div>
           <div>
             <dt>Customers</dt>
-            <dd>3–4 pilots</dd>
+            <dd>4 pilots, 2 paid</dd>
           </div>
         </dl>
 
@@ -78,12 +76,12 @@ const CopilotGTM = () => {
 
       {/* HERO VISUAL */}
       <section className="case-hero-visual">
-        <Screen
-          src={img('buying-committee.webp')}
-          alt="CopilotGTM buying committee map showing champions, supporters, detractors and AI insights for a deal"
-          label="CopilotGTM · Buying committee"
-          width={1440}
-          height={1314}
+        <img
+          className="case-hero-collage"
+          src={img('hero-collage.webp')}
+          alt="CopilotGTM screens: deal overview in front, with the briefing room, the buying committee and AI insights behind it"
+          width="2880"
+          height="1640"
         />
       </section>
 
@@ -159,7 +157,7 @@ const CopilotGTM = () => {
         />
 
         <p className="pull-line">
-          That distinction changed the way I think about product validation.
+          Useful to a user is not the same as bought by a company.
         </p>
       </section>
 
@@ -222,7 +220,7 @@ const CopilotGTM = () => {
           <div className="pivot-arrow" aria-hidden="true">→</div>
           <div>
             <span>To</span>
-            <h2>Revenue intelligence</h2>
+            <h2>Revenue orchestration</h2>
           </div>
         </div>
 
@@ -243,9 +241,8 @@ const CopilotGTM = () => {
 
         <div className="two-column" style={{ marginTop: '3.5rem' }}>
           <p>
-            The pivot was ultimately a unanimous founder decision. The original
-            product direction came from the CEO. As the product evolved, I
-            played a major role in shaping the product strategy, discovery and
+            The pivot was a unanimous founder decision. As co-founder for
+            product and design, I shaped the product strategy, discovery and
             experience around the new direction.
           </p>
           <p className="pivot-copy" style={{ marginTop: 0 }}>
@@ -256,7 +253,7 @@ const CopilotGTM = () => {
       </section>
 
       {/* 05 REFRAMING */}
-      <section className="case-section dark-section">
+      <section className="case-section">
         <div className="section-label">05 / Reframing the problem</div>
 
         <div className="two-column">
@@ -286,55 +283,207 @@ const CopilotGTM = () => {
         </div>
 
         <Chain label="The shift in product thinking" steps={['Information retrieval', 'Decision intelligence']} />
-      </section>
 
-      {/* 06 DESIGNING */}
-      <section className="case-section">
-        <div className="section-label">06 / Designing the new product</div>
-
-        <div className="two-column">
-          <h2>
-            The product grew around
-            <em> the actual sales workflow.</em>
-          </h2>
-          <div>
-            <p>
-              I worked with the founding team to identify the highest-value
-              problems and decide what to build first. We did not try to build
-              everything at once, and repeatedly deprioritized functionality
-              that was interesting but not essential.
-            </p>
-            <span className="small-label" style={{ marginTop: '1.5rem' }}>What drove the roadmap</span>
-          </div>
-        </div>
-
-        <Chain
-          label="Roadmap inputs"
-          steps={['Customer conversations', 'Recurring needs', 'Jobs-to-be-Done', 'Business value', 'Prioritization']}
-        />
+        <p style={{ marginTop: '3rem' }}>
+          I worked with the founding team to identify the highest-value
+          problems and decide what to build first. We did not try to build
+          everything at once, and repeatedly deprioritized functionality that
+          was interesting but not essential.
+        </p>
       </section>
 
       {/* PRODUCT DIVIDER */}
       <section className="product-divider">
-        <span>The product</span>
+        <span>06 / The product</span>
         <h2>
-          Eight problems, <em>one system for understanding a deal.</em>
+          Eight questions, <em>one system for understanding a deal.</em>
         </h2>
         <ol>
-          <li>Prepare before the call</li>
-          <li>Follow up after the call</li>
-          <li>Understand the deal</li>
-          <li>See the deal unfold over time</li>
-          <li>Understand the buying committee</li>
-          <li>Turn product gaps into evidence</li>
-          <li>Bring knowledge together</li>
-          <li>Move from automation to agents</li>
+          <li>Where does this deal stand?</li>
+          <li>What changed, and is it moving?</li>
+          <li>Who is influencing the outcome?</li>
+          <li>Am I ready for the next call?</li>
+          <li>What did we promise after it?</li>
+          <li>Which product gaps cost us revenue?</li>
+          <li>Where is the knowledge I need?</li>
+          <li>What should happen next, without being asked?</li>
         </ol>
       </section>
 
-      {/* P01 BRIEFING ROOM */}
+      {/* P03 DEAL OVERVIEW */}
       <section className="case-section">
-        <div className="section-label">Product 01 / Prepare before the call</div>
+        <div className="section-label">Product 01 / Understand the deal</div>
+
+        <div className="two-column">
+          <div>
+            <h2>
+              What is actually happening
+              <em> in this deal?</em>
+            </h2>
+            <p>
+              The intent of the Deal Overview was to give the salesperson or
+              sales leader a common understanding of the deal, without forcing
+              them to reconstruct it manually.
+            </p>
+          </div>
+          <div>
+            <span className="small-label">The overview brings together</span>
+            <Chips
+              label="Deal overview contents"
+              items={[
+                'Deal context',
+                'Current stage',
+                'Deal health',
+                'Contributing insights',
+                'AI-generated summary',
+                'Risks',
+                'Blockers',
+                'Sources',
+                'Tasks',
+                'Connected channels'
+              ]}
+            />
+          </div>
+        </div>
+
+        <Screen
+          src={img('deal-overview.webp')}
+          alt="CopilotGTM deal overview with context, deal health, AI summary, risks and channels"
+          label="CopilotGTM · Deal overview"
+          width={1440}
+          height={1633}
+          tall
+        />
+      </section>
+
+      {/* P04 TIMELINE */}
+      <section className="case-section dark-section">
+        <div className="section-label">Product 02 / See the deal unfold over time</div>
+
+        <div className="two-column">
+          <h2>
+            A snapshot can’t tell you
+            <em> where a deal is heading.</em>
+          </h2>
+          <div>
+            <p>
+              The team also needed to understand how the story evolved. The
+              timeline brings together events from email, Slack, Teams and the
+              CRM.
+            </p>
+            <p>
+              This became especially important as our product thesis shifted
+              toward deal momentum over time.
+            </p>
+          </div>
+        </div>
+
+        <Chain
+          label="What the timeline shows"
+          steps={['What happened', 'When it happened', 'Who was involved', 'What changed']}
+        />
+
+        <ScreenTabs
+          theme="dark"
+          label="Timeline views"
+          tabs={[
+            {
+              title: 'Timeline',
+              hint: 'Events from email, Slack, Teams and the CRM',
+              src: img('timeline-cards.webp'),
+              alt: 'Deal timeline with events from Gmail, Slack, Teams and HubSpot, risk events highlighted in red',
+              label: 'Deals · Timeline',
+              width: 1440,
+              height: 1201,
+              tall: true
+            },
+            {
+              title: 'Event detail',
+              hint: 'Summary, quotes, next steps',
+              src: img('timeline-event.webp'),
+              alt: 'Timeline event detail panel with meeting summary, highlighted customer quotes and next steps',
+              label: 'Deals · Timeline event',
+              width: 1440,
+              height: 1201
+            }
+          ]}
+        />
+      </section>
+
+      {/* P05 BUYING COMMITTEE */}
+      <section className="case-section">
+        <div className="section-label">Product 03 / Buying committee intelligence</div>
+
+        <div className="two-column">
+          <div>
+            <h2>
+              Deals aren’t won by
+              <em> one person.</em>
+            </h2>
+            <p>
+              A CRM contact list can tell you who is involved. It cannot
+              necessarily tell you:
+            </p>
+            <ul className="check-list">
+              <li>Who has influence</li>
+              <li>Who supports the deal</li>
+              <li>Who can block it</li>
+              <li>What each person wants</li>
+              <li>Who is missing</li>
+              <li>How the stakeholder group is changing</li>
+            </ul>
+          </div>
+          <div>
+            <span className="small-label">How it worked</span>
+            <p>
+              The system could build a map of the stakeholders in the deal,
+              identifying people through meetings, email threads and calendar
+              activity, then enriching their context.
+            </p>
+            <span className="small-label" style={{ marginTop: '1.5rem' }}>For each stakeholder</span>
+            <Chips
+              label="Stakeholder attributes"
+              items={['Role', 'Motivation', 'Influence', 'Stance', 'Champion potential', 'Relationship to the deal']}
+            />
+          </div>
+        </div>
+
+        <p className="callout-question">
+          Not just “who is involved?” but: who matters, what do they want, how
+          much influence do they have, and what should we do about it?
+        </p>
+
+        <Screen
+          src={img('buying-committee.webp')}
+          alt="Buying committee map showing champions, supporters, detractors and a blocker, with AI insights and key actions for the deal"
+          label="CopilotGTM · Buying committee"
+          width={1440}
+          height={1314}
+        />
+
+        <div className="two-column" style={{ marginTop: '4rem' }}>
+          <div>
+            <span className="small-label">Two ideas that shaped the map</span>
+            <Chain label="Stance" steps={['Detractor', 'Neutral', 'Supporter']} />
+            <Chain label="Champions" steps={['Identify', 'Develop', 'Strengthen champions']} />
+          </div>
+          <div>
+            <p>
+              AI insights turn the map into action: who is blocking, who is
+              becoming a champion, and which approver is missing. Coverage
+              shows who is mapped and which roles are still missing.
+            </p>
+            <p className="pull-line" style={{ marginTop: '1.5rem' }}>
+              The value was not the org chart itself. It was connecting people
+              to deal progression.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* P01 BRIEFING ROOM */}
+      <section className="case-section dark-section">
+        <div className="section-label">Product 04 / Prepare before the call</div>
 
         <div className="two-column">
           <div>
@@ -404,8 +553,8 @@ const CopilotGTM = () => {
       </section>
 
       {/* P02 FOLLOW UP */}
-      <section className="case-section dark-section">
-        <div className="section-label">Product 02 / Follow up after the call</div>
+      <section className="case-section">
+        <div className="section-label">Product 05 / Follow up after the call</div>
 
         <div className="two-column">
           <h2>
@@ -428,8 +577,7 @@ const CopilotGTM = () => {
         <Chain label="Follow-up flow" steps={['Meeting recap', 'Action items', 'Follow-up email']} />
 
         <p className="pull-line">
-          This turned the product from a passive repository into an active
-          part of the workflow.
+          The product stopped being a place to look things up and became part of the workflow.
         </p>
 
         <Screen
@@ -441,181 +589,6 @@ const CopilotGTM = () => {
           tall
           theme="dark"
         />
-      </section>
-
-      {/* P03 DEAL OVERVIEW */}
-      <section className="case-section">
-        <div className="section-label">Product 03 / Understand the deal</div>
-
-        <div className="two-column">
-          <div>
-            <h2>
-              What is actually happening
-              <em> in this deal?</em>
-            </h2>
-            <p>
-              The Deal Overview gives the salesperson or sales leader a common
-              understanding of the deal, without forcing them to reconstruct it
-              manually.
-            </p>
-          </div>
-          <div>
-            <span className="small-label">The overview brings together</span>
-            <Chips
-              label="Deal overview contents"
-              items={[
-                'Deal context',
-                'Current stage',
-                'Deal health',
-                'Contributing insights',
-                'AI-generated summary',
-                'Risks',
-                'Blockers',
-                'Sources',
-                'Tasks',
-                'Connected channels'
-              ]}
-            />
-          </div>
-        </div>
-
-        <Screen
-          src={img('deal-overview.webp')}
-          alt="CopilotGTM deal overview with context, deal health, AI summary, risks and channels"
-          label="CopilotGTM · Deal overview"
-          width={1440}
-          height={1633}
-          tall
-        />
-      </section>
-
-      {/* P04 TIMELINE */}
-      <section className="case-section dark-section">
-        <div className="section-label">Product 04 / See the deal unfold over time</div>
-
-        <div className="two-column">
-          <h2>
-            A snapshot can’t tell you
-            <em> where a deal is heading.</em>
-          </h2>
-          <div>
-            <p>
-              The team also needed to understand how the story evolved. The
-              timeline brings together events from email, Slack, Teams and the
-              CRM.
-            </p>
-            <p>
-              This became especially important as our product thesis shifted
-              toward deal momentum over time.
-            </p>
-          </div>
-        </div>
-
-        <Chain
-          label="What the timeline shows"
-          steps={['What happened', 'When it happened', 'Who was involved', 'What changed']}
-        />
-
-        <ScreenTabs
-          theme="dark"
-          label="Timeline views"
-          tabs={[
-            {
-              title: 'Timeline',
-              hint: 'Events across every channel',
-              src: img('timeline-cards.webp'),
-              alt: 'Deal timeline with events from Gmail, Slack, Teams and HubSpot, risk events highlighted in red',
-              label: 'Deals · Timeline',
-              width: 1440,
-              height: 1201,
-              tall: true
-            },
-            {
-              title: 'Event detail',
-              hint: 'Summary, quotes, next steps',
-              src: img('timeline-event.webp'),
-              alt: 'Timeline event detail panel with meeting summary, highlighted customer quotes and next steps',
-              label: 'Deals · Timeline event',
-              width: 1440,
-              height: 1201
-            }
-          ]}
-        />
-      </section>
-
-      {/* P05 BUYING COMMITTEE */}
-      <section className="case-section">
-        <div className="section-label">Product 05 / Understand the buying committee</div>
-
-        <div className="two-column">
-          <div>
-            <h2>
-              Deals aren’t won by
-              <em> one person.</em>
-            </h2>
-            <p>
-              This was one of the most important product concepts in
-              CopilotGTM. A CRM contact list can tell you who is involved. It
-              cannot necessarily tell you:
-            </p>
-            <ul className="check-list">
-              <li>Who has influence</li>
-              <li>Who supports the deal</li>
-              <li>Who can block it</li>
-              <li>What each person wants</li>
-              <li>Who is missing</li>
-              <li>How the stakeholder group is changing</li>
-            </ul>
-          </div>
-          <div>
-            <span className="small-label">Buying Committee Intelligence</span>
-            <p>
-              The system builds a map of the stakeholders in the deal. It
-              identifies people through meetings, email threads and calendar
-              activity, then enriches their context.
-            </p>
-            <span className="small-label" style={{ marginTop: '1.5rem' }}>For each stakeholder</span>
-            <Chips
-              label="Stakeholder attributes"
-              items={['Role', 'Motivation', 'Influence', 'Stance', 'Champion potential', 'Relationship to the deal']}
-            />
-          </div>
-        </div>
-
-        <p className="callout-question">
-          Not just “who is involved?” but: who matters, what do they want, how
-          much influence do they have, and what should we do about it?
-        </p>
-
-        <div className="inset-layout">
-          <Screen
-            src={img('committee-ai-insights.webp')}
-            alt="AI insights panel: a blocking stakeholder, an emerging champion, and a missing approver"
-            label="AI insights"
-            width={380}
-            height={461}
-            caption="Insights turn the map into action: who is blocking, who is becoming a champion, and which approver is missing."
-          />
-          <div className="inset-layout__side">
-            <div>
-              <span className="small-label">Two ideas that shaped the map</span>
-              <Chain label="Stance" steps={['Detractor', 'Neutral', 'Supporter']} />
-              <Chain label="Champions" steps={['Identify', 'Develop', 'Strengthen champions']} />
-            </div>
-            <Screen
-              src={img('committee-coverage.webp')}
-              alt="Committee coverage at 70 percent with missing roles CFO, Procurement and Finance"
-              label="Coverage"
-              width={1316}
-              height={86}
-              caption="Coverage makes the gaps visible: who is mapped, and which roles are still missing."
-            />
-            <p className="pull-line" style={{ marginTop: 0 }}>
-              The value was not the org chart itself. It was connecting people
-              to deal progression.
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* P06 PRODUCT GAPS */}
@@ -665,7 +638,7 @@ const CopilotGTM = () => {
         <Screen
           src={img('product-gaps.webp')}
           alt="Product gaps view linking a feature request to ARR impact, transcript snippets and linked deals"
-          label="Product Insights · explored, then deprioritized"
+          label="Product Insights"
           width={1440}
           height={980}
           tall
@@ -710,7 +683,7 @@ const CopilotGTM = () => {
         <Screen
           src={img('knowledge-base.webp')}
           alt="Knowledge Base repository with filters and a grid of documents"
-          label="Knowledge Hub · Knowledge Base"
+          label="Knowledge Base"
           width={1440}
           height={900}
         />
@@ -747,14 +720,48 @@ const CopilotGTM = () => {
 
         <p className="pull-line">
           The system could then recommend or initiate an action, such as
-          drafting an email or scheduling a meeting. AI not just as a text
-          generator, but as a way to understand context and act on it.
+          drafting an email or scheduling a meeting.
         </p>
+      </section>
+
+      {/* AI TRUST */}
+      <section className="case-section case-section--alt">
+        <div className="section-label">07 / Designing AI people can check</div>
+        <div className="two-column">
+          <h2>
+            AI insights
+            <em> showed their sources.</em>
+          </h2>
+          <p>
+            On the deal overview and product gaps screens, AI output showed the
+            same few signals, so a
+            rep could check where an insight came from before acting on it.
+          </p>
+        </div>
+
+        <CardGrid
+          columns={3}
+          numbered
+          items={[
+            {
+              title: 'Every insight has a source',
+              text: 'Deal health and dependencies list the call they came from, such as “Teams · Evaluation call”.'
+            },
+            {
+              title: 'Confidence and freshness',
+              text: 'Pinned insights show a confidence score. Summaries show when they were generated, with an option to regenerate.'
+            },
+            {
+              title: 'AI suggests, people decide',
+              text: 'Risks arrive marked “AI suggested”. Product gaps created by Kai stay pending until someone approves, pushes to Jira or archives them.'
+            }
+          ]}
+        />
       </section>
 
       {/* ARCHITECTURE */}
       <section className="case-section">
-        <div className="section-label">07 / The architecture evolved with the problem</div>
+        <div className="section-label">08 / The architecture evolved with the problem</div>
 
         <div className="two-column">
           <h2>
@@ -801,7 +808,7 @@ const CopilotGTM = () => {
 
       {/* HOW I DECIDED */}
       <section className="case-section dark-section">
-        <div className="section-label">08 / How I made product decisions</div>
+        <div className="section-label">09 / How I made product decisions</div>
         <h2>
           There was no separate PM.
           <em> So I moved between both roles.</em>
@@ -847,13 +854,72 @@ const CopilotGTM = () => {
 
         <div style={{ marginTop: '3.5rem' }}>
           <span className="small-label">Our biggest roadmap change was also our biggest product decision</span>
-          <Chain label="Biggest decision" steps={['Presales', 'Revenue intelligence']} />
+          <Chain label="Biggest decision" steps={['Presales', 'Revenue orchestration']} />
+        </div>
+
+        <div className="two-column" style={{ marginTop: '4rem' }}>
+          <div>
+            <span className="small-label">A fork in the road: the mini CRM</span>
+            <p>
+              Small customers asked for a CRM alongside the product. For those
+              willing to migrate from Zoho or Pipedrive, we built a mini CRM, as
+              we called it internally.
+            </p>
+          </div>
+          <div>
+            <span className="small-label">Why it stayed small</span>
+            <p>
+              Mid-market and enterprise customers would not migrate. Moving off
+              their CRM was too much friction, so they wanted only the layer on
+              top of the CRM they already had. That is where we kept the core
+              product.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* COMMERCIAL LESSON */}
-      <section className="case-section">
-        <div className="section-label">09 / The commercial lesson</div>
+      {/* OUTCOME */}
+      <section className="case-section outcome-section">
+        <div className="section-label">10 / Outcome</div>
+        <h2>
+          No 10x story.
+          <em> Four pilots, two paid.</em>
+        </h2>
+
+        <p className="honest-line">
+          We did not end with a clean “we launched and grew 10x” story, and I
+          would not try to manufacture one.
+        </p>
+
+        <div className="outcome-grid">
+          <div>
+            <strong>5</strong>
+            <span>U.S. presales design partners used the first product for several weeks and responded positively</span>
+          </div>
+          <div>
+            <strong>4</strong>
+            <span>pilot customers after the pivot: two paid, two on a one-month trial before a contract</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>releases built: an MVP, then a fuller second release</span>
+          </div>
+        </div>
+
+        <p style={{ marginTop: '3rem' }}>
+          We couldn’t take distribution beyond those four pilots, and that is
+          why we stopped.
+        </p>
+        <p>
+          The most important outcome was not a vanity metric. Customer
+          discovery materially changed the product, persona, positioning,
+          pricing and roadmap.
+        </p>
+      </section>
+
+      {/* WHAT I LEARNED */}
+      <section className="case-section case-section--alt">
+        <div className="section-label">11 / What I learned</div>
 
         <div className="two-column">
           <h2>
@@ -872,79 +938,26 @@ const CopilotGTM = () => {
           </div>
         </div>
 
-        <QuoteCompare
-          left={{ label: 'We had validated', quote: '“This helps me.”' }}
-          right={{ label: 'We had not validated', quote: '“My company will spend money on this.”' }}
-        />
-
-        <p style={{ marginTop: '3rem' }}>
-          Today, I would validate four things before investing heavily in a
-          product:
-        </p>
-        <div className="four-checks">
-          {['User', 'Problem', 'Buyer', 'Budget'].map((x, i) => (
-            <div key={x}>
-              <span>{String(i + 1).padStart(2, '0')}</span>
-              <strong>{x}</strong>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* OUTCOME */}
-      <section className="case-section dark-section outcome-section">
-        <div className="section-label">10 / Outcome</div>
-        <h2>
-          No 10x story.
-          <em> Real validation, twice.</em>
-        </h2>
-
-        <p className="honest-line">
-          We did not end with a clean “we launched and grew 10x” story, and I
-          would not try to manufacture one.
-        </p>
-
-        <div className="outcome-grid outcome-grid--dark">
-          <div>
-            <strong>5</strong>
-            <span>U.S. presales design partners used the first product for several weeks and responded positively</span>
-          </div>
-          <div>
-            <strong>3–4</strong>
-            <span>pilot customers onboarded after the pivot, including a couple of paid pilots</span>
-          </div>
-          <div>
-            <strong>1</strong>
-            <span>broader platform: deal context, preparation, follow-up, stakeholders, risks, knowledge and AI workflows</span>
-          </div>
-        </div>
-
-        <p style={{ marginTop: '3rem' }}>
-          The most important outcome was not a vanity metric. Customer
-          discovery materially changed the product, persona, positioning,
-          pricing and roadmap.
-        </p>
-      </section>
-
-      {/* WHAT CHANGED */}
-      <section className="case-section">
-        <div className="section-label">11 / What changed in my product thinking</div>
-
-        <div className="two-column">
-          <h2>
-            Validation is
-            <em> a chain.</em>
-          </h2>
+        <div className="two-column" style={{ marginTop: '4rem' }}>
           <div>
             <p>
               Before CopilotGTM, I thought of product discovery largely as
               understanding the user’s problem well enough to build the right
-              solution.
+              solution. After it, I think of validation as a chain. A product
+              can succeed at one step and fail at the next.
             </p>
             <p>
-              After it, I think of validation as a chain. A product can succeed
-              at one step and fail at the next.
+              Today, I would validate four things before investing heavily in
+              a product:
             </p>
+          </div>
+          <div className="four-checks" style={{ marginTop: 0, gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}>
+            {['User', 'Problem', 'Buyer', 'Budget'].map((x, i) => (
+              <div key={x}>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                <strong>{x}</strong>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -986,7 +999,7 @@ const CopilotGTM = () => {
         </p>
         <p>
           That is what turned CopilotGTM from a presales assistant into a
-          revenue intelligence product.
+          revenue orchestration product.
         </p>
       </section>
 

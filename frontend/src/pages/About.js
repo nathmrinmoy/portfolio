@@ -131,11 +131,13 @@ const About = () => {
               teams and the admins behind them.
             </p>
             <p className="about-band__body">
-              I’ve stepped out twice to build my own: Fynley in 2023, then CopilotGTM, where I led
-              product and design without a separate PM. Before that, four years at Whatfix, where I
-              helped grow the design team toward 20+ designers and initiated the Information
-              Architecture Charter. I started as a UX designer at CGI, after an MDes at IIT
-              Guwahati.
+              I’ve stepped out twice to build my own. Fynley (2023) made a company’s customer
+              conversations searchable. At CopilotGTM I led product and design without a separate PM
+              and took it to four pilots, two of them paid, before distribution stalled us. Before
+              that, four years at Whatfix: I ran design hiring until a VP of Design joined,
+              interviewing about 200 designers to hire close to 20, mentored five directly, and
+              led the information architecture initiative. I began as a UX designer at CGI,
+              after an MDes at IIT Guwahati.
             </p>
           </div>
         </div>

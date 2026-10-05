@@ -1,4 +1,4 @@
-import { FiAlertTriangle, FiClock, FiActivity, FiShield } from 'react-icons/fi';
+import { FiAlertTriangle, FiClock, FiActivity, FiBellOff } from 'react-icons/fi';
 import {
   CaseBack,
   CaseFooter,
@@ -9,6 +9,7 @@ import {
   QuoteCompare,
   Reveal,
   Screen,
+  ScreenTabs,
   StatGrid,
   useDocumentMeta
 } from '../../components/case/CaseKit';
@@ -35,6 +36,7 @@ const PipelineObservability = () => {
 
       {/* HERO */}
       <section className="case-hero">
+        <div className="case-project">Hevo · Pipeline Observability</div>
         <div className="case-eyebrow">Observability · Data platform · B2B SaaS</div>
 
         <h1>
@@ -55,7 +57,7 @@ const PipelineObservability = () => {
         <dl className="case-meta">
           <div>
             <dt>Role</dt>
-            <dd>Senior Product Designer</dd>
+            <dd>Senior Product Designer, with a PM and engineers</dd>
           </div>
           <div>
             <dt>Company</dt>
@@ -69,6 +71,10 @@ const PipelineObservability = () => {
             <dt>Users</dt>
             <dd>Data engineers</dd>
           </div>
+          <div>
+            <dt>Status</dt>
+            <dd>Shipped to all users</dd>
+          </div>
         </dl>
       </section>
 
@@ -77,8 +83,8 @@ const PipelineObservability = () => {
           src={img('pipeline-listing.webp')}
           alt="Pipelines list with a health ring of 31 pipelines, net consumption, performance metrics and per-pipeline status"
           label="Hevo · Pipelines"
-          width={3191}
-          height={1934}
+          width={2880}
+          height={1830}
           theme="dark"
         />
       </section>
@@ -98,8 +104,8 @@ const PipelineObservability = () => {
           items={[
             { icon: <FiClock />, title: 'Delayed failure detection', text: 'Problems only surfaced after downstream systems broke.' },
             { icon: <FiAlertTriangle />, title: 'Manual debugging', text: 'Engineers read through long logs with no structured tools to narrow things down.' },
-            { icon: <FiActivity />, title: 'Performance blind spots', text: 'It was hard to tell where latency came from, or what to optimize.' },
-            { icon: <FiShield />, title: 'Data quality risk', text: 'There was no proactive way to monitor pipeline integrity.' }
+            { icon: <FiActivity />, title: 'Performance blind spots', text: 'Without real-time insight, it was hard to pinpoint latency or decide what to optimize.' },
+            { icon: <FiBellOff />, title: 'No alerts at all', text: 'Hevo had no alerting, so engineers learned about failures only after something downstream broke.' }
           ]}
         />
 
@@ -127,13 +133,13 @@ const PipelineObservability = () => {
           </div>
           <div className="card-grid__item">
             <span className="card-grid__index">IBM Research</span>
-            <h3>40% of time spent troubleshooting</h3>
-            <p>Engineers often spend 40% of their time on failures because monitoring isn’t structured. Manual log analysis doesn’t scale.</p>
+            <h3>Debugging takes a large share of time</h3>
+            <p>Without structured monitoring, engineers spend much of their time troubleshooting failures, and manual log analysis doesn’t scale.</p>
           </div>
           <div className="card-grid__item">
             <span className="card-grid__index">Gartner Research</span>
             <h3>Schema drift breaks decisions</h3>
-            <p>In a survey, 60% of companies said schema drift led to incorrect business decisions.</p>
+            <p>Unexpected schema changes, like a renamed or missing column, break transformations and lead to inaccurate reports.</p>
           </div>
           <div className="card-grid__item">
             <span className="card-grid__index">Data Engineering Weekly</span>
@@ -156,7 +162,7 @@ const PipelineObservability = () => {
             <span className="small-label">Competitive analysis</span>
             <Chips label="Platforms analyzed" items={['Fivetran', 'Apache Airflow', 'Stitch']} />
             <ul className="check-list">
-              <li>Basic logging, but no proactive alerts or historical trends</li>
+              <li>Basic logging, with few proactive alerts and little historical trend analysis</li>
               <li>Users relied on third-party tools for observability</li>
             </ul>
           </div>
@@ -171,7 +177,7 @@ const PipelineObservability = () => {
         </div>
       </section>
 
-      {/* 02b JOURNEY */}
+      {/* 03 JOURNEY */}
       <section className="case-section case-section--alt">
         <div className="section-label">03 / The user journey</div>
         <h2>
@@ -210,11 +216,9 @@ const PipelineObservability = () => {
           </p>
         </div>
         <p style={{ marginTop: '2rem' }}>
-          Before designing, we defined how success would be measured: adoption
-          of the dashboard, overview page views, alert interaction, and mean
-          time to detect failures before and after the update. Mind maps
-          linked every user challenge to a feature, so no pain point was left
-          without an answer.
+          Before designing, we defined how we would judge it: adoption of the
+          new dashboard, visits to the pipeline overview, how people
+          responded to alerts, and mean time to detect failures before and after launch.
         </p>
       </section>
 
@@ -231,8 +235,7 @@ const PipelineObservability = () => {
             Each screen answers one question and hands off to the next. An
             engineer can start from “is anything wrong?” and land on the
             specific error and its suggested fix without leaving the flow.
-            Real-time alerts bring them into that flow the moment something
-            fails.
+            Alerts bring them into that flow the moment something fails.
           </p>
         </div>
 
@@ -247,9 +250,67 @@ const PipelineObservability = () => {
         </ol>
       </section>
 
-      {/* 04 LISTING */}
+      {/* 05 ALERTS */}
       <section className="case-section dark-section">
-        <div className="section-label">05 / Fleet view</div>
+        <div className="section-label">05 / Alerts</div>
+
+        <div className="two-column">
+          <h2>
+            Hear about it
+            <em> before anyone downstream does.</em>
+          </h2>
+          <div>
+            <p className="problem-solved">
+              <strong>Problem solved</strong>
+              Hevo had no alerts, so failures surfaced only after something downstream broke. Real-time alerts were one of the top requests in support tickets.
+            </p>
+            <p>
+              Alerts and notifications are separate. Only what needs action
+              becomes an alert, sent by email or webhook. Everything else shows
+              up as a notification in the dashboard. Users can set thresholds
+              per pipeline, such as latency above 30 minutes.
+            </p>
+            <p>
+              Each alert says what happened, the likely cause, the suggested
+              fix and the impact, then links to the failing run. To keep alerts
+              worth reading, repeated failures are grouped into one, there is a
+              cooldown before re-alerting, severity sets the channel, info-level
+              events go out as a daily digest, quiet hours hold non-critical
+              alerts overnight, and a “resolved” alert tells engineers when to
+              stop watching.
+            </p>
+          </div>
+        </div>
+
+        <ScreenTabs
+          label="Alerts"
+          theme="dark"
+          tabs={[
+            {
+              title: 'Alert email',
+              hint: 'Cause, fix and impact in one message',
+              src: img('alert-email.webp'),
+              alt: 'Alert email for a failed run with errors, likely cause, suggested fix, impact and a link to run details, beside an inbox of warning, resolved and digest alerts',
+              label: 'Hevo · Alert email',
+              width: 2880,
+              height: 1080
+            },
+            {
+              title: 'Alert rules',
+              hint: 'Thresholds, channels and noise controls',
+              src: img('alert-settings.webp'),
+              alt: 'Alert settings with rules by severity and channel, and noise controls for grouping, cooldown, recovery alerts, daily digest and quiet hours',
+              label: 'Hevo · Alert rules',
+              width: 2880,
+              height: 1350
+            }
+          ]}
+        />
+      </section>
+
+      {/* 06 LISTING */}
+      <section className="case-section">
+        <div className="section-label">06 / Fleet view</div>
 
         <div className="two-column">
           <h2>
@@ -262,26 +323,33 @@ const PipelineObservability = () => {
               Engineers had no quick, aggregated view of all their pipelines, so failing or under-performing ones were hard to spot.
             </p>
             <p>
-              The listing page aggregates health across every active pipeline.
-              A health donut gives an instant snapshot of running, failed and
-              pending pipelines. Net consumption shows events processed,
-              converted to a dollar value. Performance metrics cover average
-              execution time, peak and average throughput, average lag, total
-              downtime and average error rate.
+              The listing aggregates health across every pipeline. The health
+              ring splits them into healthy, warning, failing and paused. Net
+              consumption shows events processed against the plan, and
+              performance covers execution time, throughput, lag, downtime and
+              error rate.
             </p>
             <p>
-              Each pipeline card shows its name, source, destination, records
-              processed, throughput and a clear status, so a paused or
-              disabled pipeline stands out at a glance. Cards are clickable,
-              so engineers can drill straight into a problem area.
+              Pipelines are sorted worst first, and each row says why it needs
+              attention, such as “Run failed at 18:10, 146 errors”. Every row
+              opens that pipeline.
             </p>
           </div>
         </div>
+
+        <Screen
+          src={img('pipeline-listing.webp')}
+          alt="Pipelines list with a health ring, consumption, performance metrics and pipelines sorted worst first"
+          label="Hevo · Pipelines"
+          width={2880}
+          height={1830}
+          theme="dark"
+        />
       </section>
 
-      {/* 05 OVERVIEW */}
-      <section className="case-section">
-        <div className="section-label">06 / Pipeline view</div>
+      {/* 07 OVERVIEW */}
+      <section className="case-section dark-section">
+        <div className="section-label">07 / Pipeline view</div>
 
         <div className="two-column">
           <h2>
@@ -294,15 +362,14 @@ const PipelineObservability = () => {
               Engineers needed detailed insight into individual pipelines, but had to rely on raw logs to understand performance and issues.
             </p>
             <p>
-              A metadata strip at the top shows the pipeline name, ID, status,
-              last run and run frequency. Charts show event consumption and
-              latency over adjustable windows (2, 12 or 24 hours), alongside
-              average lag, average and peak throughput, and downtime.
+              The header shows the route, status, last run and frequency. When
+              the last run failed, a banner states the impact in plain words:
+              what broke and which data hasn’t reached the warehouse.
             </p>
             <p>
-              The time-period selection makes historical trends visible, so
-              long-term inefficiencies and latency spikes show up before they
-              become incidents.
+              Charts show events loaded and latency per run, with the alert
+              threshold drawn on the latency chart. Windows of 2, 12 and 24
+              hours show whether a spike is new or part of a pattern.
             </p>
           </div>
         </div>
@@ -311,15 +378,15 @@ const PipelineObservability = () => {
           src={img('pipeline-overview.webp')}
           alt="Pipeline overview with event consumption bar chart, latency line chart and throughput, lag and downtime tiles"
           label="Hevo · Pipeline overview"
-          width={3149}
-          height={1909}
+          width={2880}
+          height={1668}
           theme="dark"
         />
       </section>
 
-      {/* 06 RUN HISTORY */}
-      <section className="case-section dark-section">
-        <div className="section-label">07 / Run history</div>
+      {/* 08 RUN HISTORY */}
+      <section className="case-section">
+        <div className="section-label">08 / Run history</div>
 
         <div className="two-column">
           <h2>
@@ -332,14 +399,14 @@ const PipelineObservability = () => {
               Debugging meant sifting through logs by hand, with no structured timeline of previous runs.
             </p>
             <p>
-              Every execution is recorded with its date, timestamp, status,
-              execution time, errors detected, records processed, and average
-              and peak throughput. Engineers can click into a failed run to see
-              detailed error logs and performance insights.
+              Every run is recorded with its start time, status, duration,
+              errors, records and throughput. A strip of the last 24 runs shows
+              the pattern before you read a single row.
             </p>
             <p>
-              Patterns, such as warnings that precede a failure, become easy to
-              spot, which helps engineers find recurring failure points.
+              Warnings that come before a failure become easy to spot. Here,
+              two runs that finished with a few errors came before the run that
+              failed.
             </p>
           </div>
         </div>
@@ -348,15 +415,15 @@ const PipelineObservability = () => {
           src={img('run-history.webp')}
           alt="Run history table with success, warning and failed runs, execution time, errors and throughput"
           label="Hevo · Run history"
-          width={3159}
-          height={1915}
+          width={2880}
+          height={1616}
           theme="dark"
         />
       </section>
 
-      {/* 07 ERROR INSIGHTS */}
-      <section className="case-section">
-        <div className="section-label">08 / Error insights</div>
+      {/* 09 ERROR INSIGHTS */}
+      <section className="case-section dark-section">
+        <div className="section-label">09 / Error insights</div>
 
         <div className="two-column">
           <h2>
@@ -369,18 +436,21 @@ const PipelineObservability = () => {
               Engineers struggled to diagnose failures because errors weren’t categorized and there was no root cause analysis.
             </p>
             <p>
-              Opening a failed run starts with a summary: pipeline name and ID,
-              run date and timestamp, status, total errors, error rate and the
-              impact on throughput. Below it, structured error details replace
-              raw logs: the error type, message, affected records, severity, a
-              suggested fix and the stack trace. Error breakdowns split failures into source,
-              transformation and destination errors, and a trend graph shows
-              spikes over time.
+              A failed run opens with a summary: records processed, errors,
+              error rate and the impact on throughput. “Where it broke” splits
+              errors across source, transformation and destination, and a
+              small chart shows whether this is new or recurring.
+            </p>
+            <p>
+              Structured errors replace raw logs: type, stage, affected
+              records, severity, message and a suggested fix. A schema mismatch
+              names the column that changed. Engineers and the PM supplied the
+              fixes, and I wrote the copy so each one reads as a next step.
             </p>
             <ul className="check-list">
-              <li>Retry the run, with modifications</li>
-              <li>Open a support ticket with logs and metadata attached</li>
-              <li>Compare with similar historical failures</li>
+              <li>Fix the mapping and retry</li>
+              <li>Compare with similar past failures</li>
+              <li>Open a support ticket with logs attached</li>
               <li>Download logs for external debugging</li>
             </ul>
           </div>
@@ -390,93 +460,81 @@ const PipelineObservability = () => {
           src={img('error-insights.webp')}
           alt="Run details panel for a failed run with records processed, errors, error rate and an error table with suggested fixes"
           label="Hevo · Run details"
-          width={3135}
-          height={1900}
+          width={2880}
+          height={1440}
           theme="dark"
         />
       </section>
 
-      {/* 08 OUTCOME */}
+      {/* 10 DECISIONS */}
+      <section className="case-section">
+        <div className="section-label">10 / Design decisions</div>
+        <h2>
+          Four calls
+          <em> that shaped it.</em>
+        </h2>
+        <CardGrid
+          columns={2}
+          numbered
+          items={[
+            {
+              title: 'A drill-down, not one big dashboard',
+              text: 'One screen per question: is anything wrong, how is this pipeline behaving, when did it start, what broke. Each level hands off to the next instead of showing everything at once.'
+            },
+            {
+              title: 'The fix next to the error',
+              text: 'Every error carries its stage, severity and a suggested fix. Engineers and the PM supplied the fixes; I wrote the copy. Logs can still be downloaded, but they are no longer the first thing an engineer reads.'
+            },
+            {
+              title: 'Alerts separate from notifications',
+              text: 'Only failures, threshold breaches and recoveries become alerts, by email or webhook, and each links to the failing run. Everything else stays in the dashboard, so an alert always means act now.'
+            },
+            {
+              title: 'Fewer, better alerts',
+              text: 'Grouping, a cooldown, severity levels, a daily digest, quiet hours and recovery alerts keep the volume low enough that people keep reading them.'
+            }
+          ]}
+        />
+      </section>
+
+      {/* 11 OUTCOME */}
       <section className="case-section dark-section outcome-section">
-        <div className="section-label">09 / Outcome</div>
+        <div className="section-label">11 / Outcome</div>
         <h2>
           From finding out late
           <em> to finding out first.</em>
         </h2>
+        <p>Shipped to all Hevo users. As best I recall, these figures came mainly from product analytics and customer interviews.</p>
 
-        <div className="outcome-group">
-          <span className="small-label">Efficiency &amp; performance</span>
-          <div className="shift-grid shift-grid--two">
-            <MetricShift
-              title="Mean time to detect"
-              before={120}
-              after={15}
-              format={(v) => (v >= 60 ? `${v / 60} hr` : `${v} min`)}
-              direction="down"
-            />
-            <MetricShift
-              title="Mean time to resolve (50% faster)"
-              before={240}
-              after={120}
-              format={(v) => `${v / 60} hr`}
-              direction="down"
-            />
-          </div>
-          <StatGrid
-            columns={3}
-            items={[
-              { value: '40%', label: 'Less time debugging', note: 'structured error logs, instantly' }
-            ]}
+        <div className="shift-grid shift-grid--two">
+          <MetricShift
+            title="Mean time to detect"
+            before={120}
+            after={15}
+            format={(v) => (v >= 60 ? `${v / 60} hr` : `${v} min`)}
+            direction="down"
+          />
+          <MetricShift
+            title="Mean time to resolve"
+            before={240}
+            after={120}
+            format={(v) => `${v / 60} hr`}
+            direction="down"
           />
         </div>
 
-        <div className="outcome-group">
-          <span className="small-label">Adoption &amp; engagement</span>
-          <StatGrid
-            columns={3}
-            items={[
-              { value: '85%', label: 'Feature adoption', note: 'of active users, within the first month' },
-              { value: '3.2×', label: 'Pipeline overview visits', note: 'vs. the old log-based method' },
-              { value: '65%', label: 'Alert engagement', note: 'clicked notifications or adjusted preferences' }
-            ]}
-          />
-        </div>
-
-        <div className="outcome-group">
-          <span className="small-label">Accuracy &amp; reliability</span>
-          <StatGrid
-            columns={3}
-            items={[
-              { value: '70%', label: 'Errors resolved self-service', note: 'without escalating to support' },
-              { value: '<5%', label: 'False alert rate', note: 'alerts stayed relevant and actionable' },
-              { value: '30%', label: 'Less downtime', note: 'from proactive monitoring and faster fixes' }
-            ]}
-          />
-        </div>
-
-        <div className="outcome-group">
-          <span className="small-label">User satisfaction</span>
-          <div className="shift-grid shift-grid--two">
-            <MetricShift
-              title="Net Promoter Score"
-              before={32}
-              after={55}
-              max={100}
-              direction="up"
-            />
-            <StatGrid
-              columns={1}
-              items={[
-                { value: '88%', label: 'Task success', note: 'diagnosed and resolved pipeline issues with the new system' }
-              ]}
-            />
-          </div>
-        </div>
+        <StatGrid
+          columns={2}
+          items={[
+            { value: '85%', label: 'Adoption', note: 'of active users in the first month' },
+            { value: '65%', label: 'Alert engagement', note: 'opened the alert or adjusted their rules' }
+          ]}
+        />
       </section>
 
-      {/* 09 NEXT */}
+      {/* 12 NEXT */}
       <section className="case-section">
-        <div className="section-label">10 / What’s next</div>
+        <div className="section-label">12 / What’s next</div>
         <h2>
           The next step is
           <em> catching issues before they happen.</em>
@@ -485,34 +543,26 @@ const PipelineObservability = () => {
           columns={2}
           numbered
           items={[
-            { title: 'AI anomaly detection', text: 'Predict failures before they happen.' },
-            { title: 'Faster debugging UI', text: 'Better error filtering and drill-down navigation.' },
-            { title: 'Data lineage', text: 'Interactive tracking of how data flows through pipelines.' },
-            { title: 'Custom alerting rules', text: 'Let users set their own failure thresholds and escalation paths.' }
+            { title: 'Anomaly detection', text: 'Flag unusual volume or latency before a run fails.' },
+            { title: 'Faster debugging', text: 'Better error filtering and drill-down navigation.' },
+            { title: 'Data lineage', text: 'Show which reports a failing pipeline feeds.' },
+            { title: 'Escalation paths', text: 'Route unresolved alerts to the next person on call.' }
           ]}
         />
       </section>
 
-      {/* 10 TAKEAWAY */}
+      {/* 13 TAKEAWAY */}
       <section className="case-section final-section dark-section">
-        <div className="section-label">11 / The thinking behind it</div>
+        <div className="section-label">13 / What I learned</div>
         <h2>
-          Not a monitoring tool.
-          <em> A proactive system.</em>
+          Engineers don’t want more data.
+          <em> They want the next step.</em>
         </h2>
         <p>
-          The Observability Dashboard is not just a monitoring tool. It is a
-          proactive system that helps data engineers maintain pipeline health,
-          optimize performance and keep data reliable at scale.
+          The old experience had the information, buried in logs. The work was
+          deciding what to say first at each level, and making every screen end
+          in an action: open the run, apply the fix, retry.
         </p>
-        <CardGrid
-          columns={3}
-          items={[
-            { title: 'Faster issue resolution', text: '40% less debugging time, thanks to better error visibility.' },
-            { title: 'Improved data reliability', text: 'Lower failure rates and proactive anomaly detection.' },
-            { title: 'Better resource allocation', text: 'Engineers could focus on optimization instead of manual monitoring.' }
-          ]}
-        />
       </section>
 
       <CaseFooter slug="pipeline-observability" />
