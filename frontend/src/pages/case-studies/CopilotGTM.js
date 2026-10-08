@@ -724,18 +724,43 @@ const CopilotGTM = () => {
         </p>
       </section>
 
-      {/* AI TRUST */}
-      <section className="case-section case-section--alt">
-        <div className="section-label">07 / Designing AI people can check</div>
+      {/* AGENT ARCHITECTURE */}
+      <section className="case-section">
+        <div className="section-label">07 / System architecture</div>
         <div className="two-column">
           <h2>
-            AI insights
-            <em> showed their sources.</em>
+            Many specialist agents.
+            <em> One orchestrator.</em>
           </h2>
+          <div>
+            <p>
+              Behind the screens, CopilotGTM used several specialist agents. Each
+              had its own skills and worked out one signal, for example whether
+              the buyer side was going quiet or who was blocking.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              A single agent can be biased by the signal it watches. So a master
+              orchestrator agent weighed what every agent found and decided
+              what was actually going on.
+            </p>
+          </div>
+        </div>
+
+        <Screen
+          src={img('agent-architecture.webp')}
+          alt="Agent architecture: typed signals feed a shared context graph, specialist agents each answer their own questions, an orchestrator combines their findings, and every output carries an insight, an explanation and a recommendation before a person or a bounded automation acts"
+          label="Agent architecture · from the product to engineering plan"
+          width={1440}
+          height={559}
+          bare
+        />
+
+        <div className="two-column" style={{ marginTop: '3rem' }}>
+          <h3 className="sub-heading">The plan gave every agent one contract.</h3>
           <p>
-            On the deal overview and product gaps screens, AI output showed the
-            same few signals, so a
-            rep could check where an insight came from before acting on it.
+            The product to engineering plan defined what an agent is. Its rule:
+            product defines the contracts and intent, engineering chooses the
+            architecture and implementation.
           </p>
         </div>
 
@@ -743,25 +768,89 @@ const CopilotGTM = () => {
           columns={3}
           numbered
           items={[
-            {
-              title: 'Every insight has a source',
-              text: 'Deal health and dependencies list the call they came from, such as “Teams · Evaluation call”.'
-            },
-            {
-              title: 'Confidence and freshness',
-              text: 'Pinned insights show a confidence score. Summaries show when they were generated, with an option to regenerate.'
-            },
-            {
-              title: 'AI suggests, people decide',
-              text: 'Risks arrive marked “AI suggested”. Product gaps created by Kai stay pending until someone approves, pushes to Jira or archives them.'
-            }
+            { title: 'One responsibility', text: 'A one-sentence job and the questions the agent is responsible for answering.' },
+            { title: 'Typed signals in', text: 'Agents read typed signals with a source, time, strength and decay, not raw text.' },
+            { title: 'Its own state', text: 'Each agent keeps state over time, and more than one hypothesis where the contract calls for it.' },
+            { title: 'Insight, explanation, recommendation', text: 'Every conclusion comes with its reasoning. A recommendation can also be to stay silent.' },
+            { title: 'Rules or AI, decided up front', text: 'The contract says which parts are deterministic and which need model reasoning.' },
+            { title: 'Failure modes written down', text: 'Known limitations are part of the contract.' }
           ]}
         />
+
+        <p className="pull-line">
+          The plan also called for precedence rules when agents disagree, and
+          for defining when the right answer is to say nothing.
+        </p>
       </section>
 
-      {/* ARCHITECTURE */}
+      {/* AI TRUST */}
+      <section className="case-section case-section--alt">
+        <div className="section-label">08 / Designing AI people can trust</div>
+        <div className="two-column">
+          <h2>
+            Trust came from
+            <em> what people could check.</em>
+          </h2>
+          <p>
+            Sales teams do not act on a black box. Kai’s AI surfaces shared a
+            few patterns, so a rep could see why Kai said something, how
+            sure it was, how fresh it was, and who decides.
+          </p>
+        </div>
+
+        <div className="trust-rows">
+          {[
+            {
+              tag: 'Explainable AI · Grounding',
+              title: 'Every conclusion shows its reasoning and its source.',
+              text: 'Deal health says what Kai thinks, then lists why, with each reason tagged with the call it came from.',
+              src: 'trust-explain.webp', w: 996, h: 358,
+              alt: 'Deal health card marked At risk, with a Why Kai thinks so list where each reason cites an evaluation call'
+            },
+            {
+              tag: 'Confidence',
+              title: 'Insights say how sure they are.',
+              text: 'Pinned insights carry a confidence score next to the question they answer and the calls behind them.',
+              src: 'trust-confidence.webp', w: 449, h: 243,
+              alt: 'Pinned insight card with a 92% confidence badge and two cited calls'
+            },
+            {
+              tag: 'Human in the loop',
+              title: 'AI suggests. People decide.',
+              text: 'New risks arrive as suggestions a rep can add or dismiss. Product gaps Kai detects stay pending until someone approves, pushes to Jira or archives them.',
+              src: 'trust-suggested.webp', w: 996, h: 331,
+              alt: 'Risks and blockers card with an AI suggested risk offering Add and dismiss, above a table of risks with their source calls'
+            },
+            {
+              tag: 'Freshness',
+              title: 'People can see how old an answer is.',
+              text: 'AI summaries show when they were last updated, with a way to regenerate. In the agent plan, signals also lose weight as they age.',
+              src: 'trust-freshness.webp', w: 996, h: 332,
+              alt: 'AI generated deal summary showing when it was last updated and a Regenerate button'
+            },
+            {
+              tag: 'Bounded autonomy',
+              title: 'Automation stays inside clear limits.',
+              text: 'Follow-up emails were saved as drafts with a reminder scheduled before sending. The agent plan required any automated action to be listed, permissioned, logged and reversible.',
+              src: 'trust-draft.webp', w: 966, h: 524,
+              alt: 'Follow-up email marked Draft, with Send, Copy and Regenerate actions'
+            }
+          ].map((r) => (
+            <div className="trust-row" key={r.tag}>
+              <div>
+                <span className="small-label">{r.tag}</span>
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+              </div>
+              <img src={img(r.src)} alt={r.alt} width={r.w * 2} height={r.h * 2} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* INFORMATION ARCHITECTURE */}
       <section className="case-section">
-        <div className="section-label">08 / The architecture evolved with the problem</div>
+        <div className="section-label">09 / Information architecture</div>
 
         <div className="two-column">
           <h2>
@@ -808,7 +897,7 @@ const CopilotGTM = () => {
 
       {/* HOW I DECIDED */}
       <section className="case-section dark-section">
-        <div className="section-label">09 / How I made product decisions</div>
+        <div className="section-label">10 / How I made product decisions</div>
         <h2>
           There was no separate PM.
           <em> So I moved between both roles.</em>
@@ -880,7 +969,7 @@ const CopilotGTM = () => {
 
       {/* OUTCOME */}
       <section className="case-section outcome-section">
-        <div className="section-label">10 / Outcome</div>
+        <div className="section-label">11 / Outcome</div>
         <h2>
           No 10x story.
           <em> Four pilots, two paid.</em>
@@ -919,7 +1008,7 @@ const CopilotGTM = () => {
 
       {/* WHAT I LEARNED */}
       <section className="case-section case-section--alt">
-        <div className="section-label">11 / What I learned</div>
+        <div className="section-label">12 / What I learned</div>
 
         <div className="two-column">
           <h2>
@@ -986,7 +1075,7 @@ const CopilotGTM = () => {
 
       {/* TAKEAWAY */}
       <section className="case-section final-section dark-section">
-        <div className="section-label">12 / The takeaway</div>
+        <div className="section-label">13 / The takeaway</div>
         <h2>
           The most important design decision
           <br />
