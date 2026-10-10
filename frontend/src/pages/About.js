@@ -3,8 +3,8 @@ import useGridDrift from '../hooks/useGridDrift';
 
 const experience = [
   { org: 'CopilotGTM', role: 'Co-founder', when: '2025–26' },
-  { org: 'Hevo', role: 'Senior Product Designer', when: '2024–25' },
-  { org: 'Fynley', role: 'Founder', when: '2023–24' },
+  { org: 'Hevo', role: 'Senior Product Designer', when: '2023–24' },
+  { org: 'Fynley', role: 'Founder', when: '2023' },
   { org: 'Whatfix', role: 'Senior Product Designer', when: '2019–23' },
   { org: 'CGI', role: 'UX Designer', when: '2017–19' }
 ];
@@ -135,7 +135,7 @@ const About = () => {
               conversations searchable. At CopilotGTM I led product and design without a separate PM
               and took it to four pilots, two of them paid, before distribution stalled us. Before
               that, four years at Whatfix: I ran design hiring until a VP of Design joined,
-              interviewing about 200 designers to hire close to 20, mentored five directly, and
+              interviewing about 200 designers to hire close to 20, mentored five or six directly, and
               led the information architecture initiative. I began as a UX designer at CGI,
               after an MDes at IIT Guwahati.
             </p>

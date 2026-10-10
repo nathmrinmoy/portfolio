@@ -31,7 +31,7 @@ export const projects = [
     description:
       'A drill-down from fleet health to the exact error and its fix, so engineers find failures before downstream reports break.',
     category: 'Data platform',
-    year: '2024–25',
+    year: '2023–24',
     route: '/projects/pipeline-observability',
     thumb: '/projects/etl/cover.webp',
     alt: 'Hevo pipelines dashboard',
